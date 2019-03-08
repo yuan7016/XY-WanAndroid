@@ -20,7 +20,7 @@ import com.google.android.material.bottomnavigation.LabelVisibilityMode
         fun disableShiftMode(view: BottomNavigationView) {
             val menuView = view.getChildAt(0) as BottomNavigationMenuView
             try {
-                menuView.labelVisibilityMode = LabelVisibilityMode.LABEL_VISIBILITY_LABELED
+                menuView.labelVisibilityMode = LabelVisibilityMode.LABEL_VISIBILITY_LABELED // 1
                 for (i in 0 until menuView.childCount) {
                     val item = menuView.getChildAt(i) as BottomNavigationItemView
                     item.setShifting(false)

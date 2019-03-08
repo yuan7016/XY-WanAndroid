@@ -1,6 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
+    <!--appBar颜色-->
+    <color name="colorPrimary">#2F80ED</color>
+    <!--状态栏颜色-->
+    <color name="colorPrimaryDark">#2F80ED</color>
+    <!--组件颜色-->
     <color name="colorAccent">#D81B60</color>
+
+
+    <!--White-->
+    <color name="White_FFFFFF">#FFFFFF</color>
+
+    <!--Black-->
+    <color name="Black">#000000</color>
+    <color name="Black_212121">#212121</color>
+    <color name="Black_333333">#333333</color>
+    <color name="Black_666666">#666666</color>
+
+    <!--Gray-->
+    <color name="Gray_9E9E9E">#9E9E9E</color>
+    <color name="Gray_999999">#999999</color>
+    <color name="Gray_CCCCCC">#CCCCCC</color>
+    <color name="Gray_CDCDCD">#CDCDCD</color>
+    <color name="Gray_F1F1F1">#F1F1F1</color>
+    <color name="Gray_EEEEEE">#EEEEEE</color>
+    <color name="Gray_F9F9F9">#F9F9F9</color>
+
+    <!--Green-->
+    <color name="Green_00A653">#00A653</color>
+    <color name="Green_0B8046">#0B8046</color>
+    <color name="Green_0BEC86">#0bec86</color>
+    <color name="Green_00CC66">#00CC66</color>
+    <color name="Green_76D571">#76D571</color>
+    <color name="Green_00574B">#00574B</color>
+    <color name="Green_008577">#008577</color>
+
+
+    <!--Red-->
+    <color name="Red_FF0000">#FF0000</color>
+    <color name="Red_F02B2B">#F02B2B</color>
+    <color name="Red_F44336">#F44336</color>
+    <color name="Red_F36A6A">#F36A6A</color>
+    <color name="Red_DF4C45">#DF4C45</color>
+
+    <!--Yellow-->
+    <color name="Yellow_F59E3C">#F59E3C</color>
+    <color name="Yellow_FFCC00">#FFCC00</color>
+
+    <!--Blue-->
+    <color name="Blue_0099FF">#0099FF</color>
+    <color name="Blue_367AF7">#367AF7</color>
 </resources>
