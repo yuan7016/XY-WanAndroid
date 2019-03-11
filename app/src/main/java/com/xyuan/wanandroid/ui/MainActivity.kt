@@ -2,10 +2,13 @@ package com.xyuan.wanandroid.ui
 
 import android.os.Bundle
 import android.view.KeyEvent
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.xyuan.wanandroid.R
 import com.xyuan.wanandroid.home.HomeFragment
 import com.xyuan.wanandroid.system.ProjectFragment
@@ -14,27 +17,32 @@ import com.xyuan.wanandroid.system.WechatFragment
 import com.xyuan.wanandroid.util.BottomNavigationViewUtil
 import kotlinx.android.synthetic.main.activity_main.*
 import nmr.kmbb.smartmedical.adapter.MainFragmentPagerAdapter
-import java.util.ArrayList
+import java.util.*
+
 
 class MainActivity : AppCompatActivity() {
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
-            R.id.navigation_home -> {
-                viewPagerMain.setCurrentItem(0)
+            com.xyuan.wanandroid.R.id.navigation_home -> {
+                viewPagerMain.currentItem = 0
+                toolbarMain.title = getString(R.string.title_home)
                 return@OnNavigationItemSelectedListener true
             }
-            R.id.navigation_system -> {
-                viewPagerMain.setCurrentItem(1)
+            com.xyuan.wanandroid.R.id.navigation_system -> {
+                viewPagerMain.currentItem = 1
+                toolbarMain.title = getString(R.string.title_system)
                 return@OnNavigationItemSelectedListener true
             }
-            R.id.navigation_wechat -> {
-                viewPagerMain.setCurrentItem(2)
+            com.xyuan.wanandroid.R.id.navigation_wechat -> {
+                viewPagerMain.currentItem = 2
+                toolbarMain.title = getString(R.string.title_wechat)
                 return@OnNavigationItemSelectedListener true
             }
 
-            R.id.navigation_project -> {
-                viewPagerMain.setCurrentItem(3)
+            com.xyuan.wanandroid.R.id.navigation_project -> {
+                viewPagerMain.currentItem = 3
+                toolbarMain.title = getString(R.string.title_project)
                 return@OnNavigationItemSelectedListener true
             }
         }
@@ -43,8 +51,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(com.xyuan.wanandroid.R.layout.activity_main)
 
+        initActionBar()
 
         val fragmentList: ArrayList<Fragment> = arrayListOf(HomeFragment(), SystemFragment(), WechatFragment(), ProjectFragment())
 
@@ -56,6 +65,14 @@ class MainActivity : AppCompatActivity() {
         navigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
         initListener()
+    }
+
+    private fun initActionBar(){
+        setSupportActionBar(toolbarMain)
+        val toggle = ActionBarDrawerToggle(
+                this, drawer_layout_main, toolbarMain, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+        drawer_layout_main.addDrawerListener(toggle)
+        toggle.syncState()
     }
 
     private fun initListener() {
@@ -70,6 +87,25 @@ class MainActivity : AppCompatActivity() {
 
         ll_about_us.setOnClickListener {
             Toast.makeText(this@MainActivity, "关于我", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.menu_action_bar, menu)
+
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+
+        return when (item!!.itemId) {
+            R.id.ab_search -> {
+                Toast.makeText(this, "你点击了“search”按键！", Toast.LENGTH_SHORT).show()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 

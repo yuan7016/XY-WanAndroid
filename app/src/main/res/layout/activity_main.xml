@@ -2,7 +2,7 @@
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container"
+    android:id="@+id/drawer_layout_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -10,12 +10,29 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbarMain"
+                android:layout_width="match_parent"
+                app:title="@string/title_home"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+
         <com.xyuan.wanandroid.view.CustomerViewPager
             android:id="@+id/viewPagerMain"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_below="@id/appBarLayout"
             android:layout_above="@id/navigationView" />
-
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/navigationView"
@@ -33,6 +50,7 @@
         android:layout_width="280dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        android:layout_marginBottom="50dp"
         android:background="@color/White_FFFFFF"
         android:orientation="vertical">
 
@@ -84,7 +102,7 @@
 
         </LinearLayout>
 
-        <include layout="@layout/common_view_gray_line"/>
+        <include layout="@layout/common_view_gray_line" />
 
         <!--我的收藏-->
         <LinearLayout
@@ -110,7 +128,7 @@
 
         </LinearLayout>
 
-        <include layout="@layout/common_view_gray_line"/>
+        <include layout="@layout/common_view_gray_line" />
 
         <!--关于我们-->
         <LinearLayout

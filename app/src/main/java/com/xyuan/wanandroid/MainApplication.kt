@@ -1,6 +1,7 @@
 package com.xyuan.wanandroid
 
 import android.app.Application
+import com.xyuan.wanandroid.util.SharedPreferencesUtil
 import me.jessyan.autosize.AutoSize
 import me.jessyan.autosize.AutoSizeConfig
 
@@ -12,7 +13,7 @@ class MainApplication : Application() {
     override fun onCreate() {
         super.onCreate()
 
-
+        SharedPreferencesUtil.init(this)
         initAutoSize()
     }
 

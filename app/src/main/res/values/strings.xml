@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">XY-WanAndroid</string>
+    <string name="app_name">XY玩Android</string>
     <string name="title_home">首页</string>
     <string name="title_system">体系</string>
     <string name="title_wechat">公众号</string>
@@ -9,4 +9,13 @@
     <string name="title_setting">设置</string>
     <string name="title_my_collection">我的收藏</string>
     <string name="title_about_us">关于我们</string>
+
+    <string name="text_search">搜索</string>
+    <string name="title_activity_test">TestActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
 </resources>
