@@ -30,10 +30,11 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation rootProject.ext.dependencies["appcompat"]
     implementation rootProject.ext.dependencies["core-ktx"]
     implementation rootProject.ext.dependencies["material"]
+    implementation rootProject.ext.dependencies["legacy-support-v4"]
     implementation rootProject.ext.dependencies["constraint-layout"]
     implementation rootProject.ext.dependencies["gson"]
     implementation rootProject.ext.dependencies["fastjson"]

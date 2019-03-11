@@ -15,6 +15,7 @@ ext {
             "appcompat"        : 'androidx.appcompat:appcompat:1.0.0-beta01',
             "core-ktx"         : 'androidx.core:core-ktx:1.1.0-alpha04',
             "material"         : 'com.google.android.material:material:1.0.0-beta01',
+            "legacy-support-v4": 'androidx.legacy:legacy-support-v4:1.0.0-beta01',
             "constraint-layout": 'androidx.constraintlayout:constraintlayout:1.1.3',
 
             //------------------------------------------------------------------------------------------------------------
