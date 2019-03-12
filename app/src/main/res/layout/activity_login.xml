@@ -1,39 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
-    <androidx.appcompat.widget.Toolbar
-        android:layout_width="match_parent"
+    <include layout="@layout/common_tool_bar_layout" />
+
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/icon_android" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary" />
+        android:layout_marginTop="6dp"
+        android:text="@string/app_name"
+        android:textSize="14sp" />
 
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp">
 
         <AutoCompleteTextView
-            android:id="@+id/email"
+            android:id="@+id/actvAccount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/prompt_email"
-            android:inputType="textEmailAddress"
+            android:hint="@string/prompt_account"
+            android:inputType="text"
             android:maxLines="1"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
             android:singleLine="true" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        >
 
         <EditText
-            android:id="@+id/password"
+            android:id="@+id/actvPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/prompt_password"
@@ -42,18 +60,34 @@
             android:imeOptions="actionUnspecified"
             android:inputType="textPassword"
             android:maxLines="1"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
             android:singleLine="true" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/email_sign_in_button"
-        style="?android:textAppearanceSmall"
-        android:layout_width="match_parent"
+        android:id="@+id/btnLogin"
+        android:layout_width="250dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="35dp"
+        android:elevation="3dp"
+        android:background="@drawable/bg_shape_blue_btn"
+        android:text="@string/login"
+        android:textColor="@color/White_FFFFFF"
+        android:textSize="16sp" />
+
+
+
+    <TextView
+        android:id="@+id/tvToRegister"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/action_sign_in"
-        android:textStyle="bold" />
-
-
+        android:padding="4dp"
+        android:gravity="center_vertical"
+        android:drawableStart="@drawable/icon_alert"
+        android:text="没有账号？去注册"
+        android:layout_marginTop="15dp"
+        android:textSize="14sp"
+        />
 </LinearLayout>

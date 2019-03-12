@@ -26,7 +26,7 @@ class LoginActivity : AppCompatActivity(){
         setContentView(R.layout.activity_login)
         // Set up the login form.
 
-        password.setOnEditorActionListener(TextView.OnEditorActionListener { _, id, _ ->
+        actvPassword.setOnEditorActionListener(TextView.OnEditorActionListener { _, id, _ ->
             if (id == EditorInfo.IME_ACTION_DONE || id == EditorInfo.IME_NULL) {
                 attemptLogin()
                 return@OnEditorActionListener true
@@ -34,7 +34,7 @@ class LoginActivity : AppCompatActivity(){
             false
         })
 
-        email_sign_in_button.setOnClickListener { attemptLogin() }
+        btnLogin.setOnClickListener { attemptLogin() }
     }
 
 
@@ -49,31 +49,31 @@ class LoginActivity : AppCompatActivity(){
         }
 
         // Reset errors.
-        email.error = null
-        password.error = null
+        actvAccount.error = null
+        actvPassword.error = null
 
         // Store values at the time of the login attempt.
-        val emailStr = email.text.toString()
-        val passwordStr = password.text.toString()
+        val emailStr = actvAccount.text.toString()
+        val passwordStr = actvPassword.text.toString()
 
         var cancel = false
         var focusView: View? = null
 
         // Check for a valid password, if the user entered one.
         if (!TextUtils.isEmpty(passwordStr) && !isPasswordValid(passwordStr)) {
-            password.error = getString(R.string.error_invalid_password)
-            focusView = password
+            actvPassword.error = getString(R.string.error_invalid_password)
+            focusView = actvPassword
             cancel = true
         }
 
         // Check for a valid email address.
         if (TextUtils.isEmpty(emailStr)) {
-            email.error = getString(R.string.error_field_required)
-            focusView = email
+            actvAccount.error = getString(R.string.error_field_required)
+            focusView = actvAccount
             cancel = true
         } else if (!isEmailValid(emailStr)) {
-            email.error = getString(R.string.error_invalid_email)
-            focusView = email
+            actvAccount.error = getString(R.string.error_invalid_email)
+            focusView = actvAccount
             cancel = true
         }
 
@@ -100,13 +100,7 @@ class LoginActivity : AppCompatActivity(){
     }
 
 
-    private fun addEmailsToAutoComplete(emailAddressCollection: List<String>) {
-        //Create adapter to tell the AutoCompleteTextView what to show in its dropdown list.
-        val adapter = ArrayAdapter(this@LoginActivity,
-                android.R.layout.simple_dropdown_item_1line, emailAddressCollection)
 
-        email.setAdapter(adapter)
-    }
 
     /**
      * Represents an asynchronous login/registration task used to authenticate
@@ -140,8 +134,8 @@ class LoginActivity : AppCompatActivity(){
             if (success!!) {
                 finish()
             } else {
-                password.error = getString(R.string.error_incorrect_password)
-                password.requestFocus()
+                actvPassword.error = getString(R.string.error_incorrect_password)
+                actvPassword.requestFocus()
             }
         }
 
