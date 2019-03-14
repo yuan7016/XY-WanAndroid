@@ -1,6 +1,8 @@
 package com.xyuan.wanandroid
 
 import android.app.Application
+import com.alibaba.android.arouter.launcher.ARouter
+import com.hjq.toast.ToastUtils
 import com.xyuan.wanandroid.util.SharedPreferencesUtil
 import me.jessyan.autosize.AutoSize
 import me.jessyan.autosize.AutoSizeConfig
@@ -10,11 +12,25 @@ import me.jessyan.autosize.AutoSizeConfig
  */
 class MainApplication : Application() {
 
+    var IS_DEBUG = true
+
     override fun onCreate() {
         super.onCreate()
 
+        ToastUtils.init(this)
         SharedPreferencesUtil.init(this)
         initAutoSize()
+        initARouter()
+    }
+
+    private fun initARouter() {
+
+        if (IS_DEBUG) {           // 这两行必须写在init之前，否则这些配置在init过程中将无效
+            ARouter.openLog()     // 打印日志
+            ARouter.openDebug()   // 开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)
+        }
+        ARouter.init(this) // 尽可能早，推荐在Application中初始化
+
     }
 
     private fun initAutoSize() {

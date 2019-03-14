@@ -29,8 +29,10 @@ ext {
             "converter-gson"   : 'com.squareup.retrofit2:converter-gson:2.3.0',
             "adapter-rxjava2"  : 'com.squareup.retrofit2:adapter-rxjava2:2.3.0',
 
-            //屏幕适配方案
-            "autosize"         : 'me.jessyan:autosize:1.1.2',
+
+            "autosize"         : 'me.jessyan:autosize:1.1.2', //屏幕适配方案
+            "arouter-api"      : 'com.alibaba:arouter-api:1.4.1',
+            "arouter-compiler" : 'com.alibaba:arouter-compiler:1.2.2',
             //"baseRecyclerViewAdapterHelper"  : 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.46',
     ]
 }

@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -9,6 +10,13 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode rootProject.ext.appVersionCode
         versionName rootProject.ext.appVersionName
+
+        //ARouter
+        kapt {
+            arguments {
+                arg("AROUTER_MODULE_NAME", project.getName())
+            }
+        }
 
     }
     buildTypes {
@@ -40,4 +48,12 @@ dependencies {
     implementation rootProject.ext.dependencies["fastjson"]
     implementation rootProject.ext.dependencies["glide"]
     implementation rootProject.ext.dependencies["autosize"]
+
+    // 替换成最新版本, 需要注意的是api
+    // 要与compiler匹配使用，均使用最新版可以保证兼容
+    implementation rootProject.ext.dependencies["arouter-api"]
+    kapt rootProject.ext.dependencies["arouter-compiler"]
+
+    //ToastUtil
+    implementation 'com.hjq:toast:5.0'
 }

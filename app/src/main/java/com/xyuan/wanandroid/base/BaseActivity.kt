@@ -2,6 +2,10 @@ package com.xyuan.wanandroid.base
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
+import com.alibaba.android.arouter.launcher.ARouter
+import com.xyuan.wanandroid.util.AppLog
+import kotlinx.android.synthetic.main.common_tool_bar_layout.*
 
 /**
  * Created by YuanZhiQiang on 2019/03/08 14:30.
@@ -29,8 +33,22 @@ abstract class BaseActivity : AppCompatActivity(){
 
         setContentView(getContentLayoutId())
 
+        //
+        ARouter.getInstance().inject(this)
+
         initView()
 
         initData()
+    }
+
+
+    protected fun initToolBar(toolBarView : Toolbar,toolBarTitle : String) {
+        setSupportActionBar(toolBarView)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        supportActionBar!!.setHomeButtonEnabled(true)
+        supportActionBar!!.title = toolBarTitle
+        toolBarView.setNavigationOnClickListener {
+            onBackPressed()
+        }
     }
 }

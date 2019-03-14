@@ -1,26 +1,31 @@
 package com.xyuan.wanandroid.ui
 
-import android.os.Bundle
 import android.view.KeyEvent
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
+import com.alibaba.android.arouter.facade.annotation.Route
+import com.alibaba.android.arouter.launcher.ARouter
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.xyuan.wanandroid.R
+import com.xyuan.wanandroid.base.BaseActivity
 import com.xyuan.wanandroid.home.HomeFragment
 import com.xyuan.wanandroid.system.ProjectFragment
 import com.xyuan.wanandroid.system.SystemFragment
 import com.xyuan.wanandroid.system.WechatFragment
 import com.xyuan.wanandroid.util.BottomNavigationViewUtil
+import com.xyuan.wanandroid.util.PathManager
 import kotlinx.android.synthetic.main.activity_main.*
 import nmr.kmbb.smartmedical.adapter.MainFragmentPagerAdapter
 import java.util.*
 
-
-class MainActivity : AppCompatActivity() {
+/**
+ * MainActivity
+ */
+class MainActivity : BaseActivity() {
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
@@ -49,23 +54,27 @@ class MainActivity : AppCompatActivity() {
         false
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(com.xyuan.wanandroid.R.layout.activity_main)
 
+    override fun getContentLayoutId(): Int {
+        return R.layout.activity_main
+    }
+
+    override fun initView() {
         initActionBar()
 
-        val fragmentList: ArrayList<Fragment> = arrayListOf(HomeFragment(), SystemFragment(), WechatFragment(), ProjectFragment())
-
+        BottomNavigationViewUtil.disableShiftMode(navigationView)
         viewPagerMain.canScroll = false
-        viewPagerMain.adapter = MainFragmentPagerAdapter(supportFragmentManager, fragmentList)
         viewPagerMain.offscreenPageLimit = 4
 
-        BottomNavigationViewUtil.disableShiftMode(navigationView)
-        navigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+    }
 
+    override fun initData() {
+        val fragmentList: ArrayList<Fragment> = arrayListOf(HomeFragment(), SystemFragment(), WechatFragment(), ProjectFragment())
+        viewPagerMain.adapter = MainFragmentPagerAdapter(supportFragmentManager, fragmentList)
+        navigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         initListener()
     }
+
 
     private fun initActionBar(){
         setSupportActionBar(toolbarMain)
@@ -76,6 +85,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initListener() {
+
+        ivUserImg.setOnClickListener {
+            //login UI
+            ARouter.getInstance().build(PathManager.LOGIN_ACTIVITY_PATH).navigation()
+        }
 
         ll_setting.setOnClickListener {
             Toast.makeText(this@MainActivity, "设置", Toast.LENGTH_SHORT).show()
@@ -89,7 +103,6 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this@MainActivity, "关于我", Toast.LENGTH_SHORT).show()
         }
     }
-
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater = menuInflater
