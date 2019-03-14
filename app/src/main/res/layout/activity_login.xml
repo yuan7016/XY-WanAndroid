@@ -13,7 +13,7 @@
     <ImageView
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         android:src="@drawable/icon_android" />
 
 
@@ -26,8 +26,10 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textAccountInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:errorEnabled="true"
         android:layout_margin="20dp">
 
         <AutoCompleteTextView
@@ -44,20 +46,19 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textPasswordInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:errorEnabled="true"
+        app:passwordToggleEnabled="true"
         android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        >
+        android:layout_marginEnd="20dp">
 
         <EditText
-            android:id="@+id/actvPassword"
+            android:id="@+id/etPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/prompt_password"
-            android:imeActionId="6"
-            android:imeActionLabel="@string/action_sign_in_short"
-            android:imeOptions="actionUnspecified"
             android:inputType="textPassword"
             android:maxLines="1"
             android:paddingStart="5dp"
@@ -70,7 +71,7 @@
         android:id="@+id/btnLogin"
         android:layout_width="250dp"
         android:layout_height="45dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="45dp"
         android:elevation="3dp"
         android:background="@drawable/bg_shape_blue_btn"
         android:text="@string/login"
