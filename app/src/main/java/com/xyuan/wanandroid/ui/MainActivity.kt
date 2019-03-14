@@ -25,6 +25,7 @@ import java.util.*
 /**
  * MainActivity
  */
+@Route(path= PathManager.MAIN_ACTIVITY_PATH)
 class MainActivity : BaseActivity() {
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->

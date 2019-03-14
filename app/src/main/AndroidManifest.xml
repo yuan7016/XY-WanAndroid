@@ -31,9 +31,9 @@
             android:name="design_height_in_dp"
             android:value="667" />
 
+        <!-- ================================================================================= -->
         <activity
-            android:name=".ui.MainActivity"
-            android:launchMode="singleTop"
+            android:name=".ui.SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -42,11 +42,16 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".ui.MainActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"/>
 
         <activity
             android:name=".ui.LoginActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>

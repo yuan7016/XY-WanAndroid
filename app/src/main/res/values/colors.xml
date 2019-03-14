@@ -34,6 +34,7 @@
     <color name="Green_76D571">#76D571</color>
     <color name="Green_00574B">#00574B</color>
     <color name="Green_008577">#008577</color>
+    <color name="Green_28B446">#28B446</color>
 
 
     <!--Red-->
@@ -42,14 +43,17 @@
     <color name="Red_F44336">#F44336</color>
     <color name="Red_F36A6A">#F36A6A</color>
     <color name="Red_DF4C45">#DF4C45</color>
+    <color name="Red_F14336">#F14336</color>
 
     <!--Yellow-->
     <color name="Yellow_F59E3C">#F59E3C</color>
     <color name="Yellow_FFCC00">#FFCC00</color>
+    <color name="Yellow_F9B11F">#f9b11f</color>
 
     <!--Blue-->
     <color name="Blue_0099FF">#0099FF</color>
     <color name="Blue_367AF7">#367AF7</color>
     <color name="Blue_2F80ED">#2F80ED</color>
     <color name="Blue_43A6F0">#43A6F0</color>
+
 </resources>
