@@ -3,6 +3,7 @@ package com.xyuan.wanandroid.ui
 import android.text.Editable
 import android.text.TextUtils
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.alibaba.android.arouter.launcher.ARouter
 import com.hjq.toast.ToastUtils
 import com.xyuan.wanandroid.R
 import com.xyuan.wanandroid.base.BaseActivity
@@ -60,7 +61,7 @@ class LoginActivity : BaseActivity(){
         btnLogin.setOnClickListener { attemptLogin() }
 
         tvToRegister.setOnClickListener {
-            ToastUtils.show("注册")
+            ARouter.getInstance().build(PathManager.REGISTER_ACTIVITY_PATH).navigation()
         }
     }
 

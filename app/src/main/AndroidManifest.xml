@@ -34,6 +34,7 @@
         <!-- ================================================================================= -->
         <activity
             android:name=".ui.SplashActivity"
+            android:theme="@style/SplashTheme"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -49,6 +50,11 @@
 
         <activity
             android:name=".ui.LoginActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.RegisterActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
 

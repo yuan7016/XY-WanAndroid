@@ -9,10 +9,13 @@
 
     </style>
 
-    <style name="AppTheme.NoActionBar">
+    <style name="SplashTheme" parent="AppTheme">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="android:windowBackground">@drawable/iv_screen_bg3</item>
     </style>
+
+
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
