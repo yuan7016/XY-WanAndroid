@@ -7,7 +7,7 @@ import com.hjq.toast.ToastUtils
 import com.xyuan.wanandroid.R
 import com.xyuan.wanandroid.base.BaseActivity
 import com.xyuan.wanandroid.listener.XYTextWatcher
-import com.xyuan.wanandroid.util.PathManager
+import com.xyuan.wanandroid.constant.PathManager
 import kotlinx.android.synthetic.main.activity_register.*
 import kotlinx.android.synthetic.main.common_tool_bar_layout.*
 

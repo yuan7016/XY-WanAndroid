@@ -5,7 +5,6 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
@@ -17,7 +16,7 @@ import com.xyuan.wanandroid.system.ProjectFragment
 import com.xyuan.wanandroid.system.SystemFragment
 import com.xyuan.wanandroid.system.WechatFragment
 import com.xyuan.wanandroid.util.BottomNavigationViewUtil
-import com.xyuan.wanandroid.util.PathManager
+import com.xyuan.wanandroid.constant.PathManager
 import kotlinx.android.synthetic.main.activity_main.*
 import nmr.kmbb.smartmedical.adapter.MainFragmentPagerAdapter
 import java.util.*

@@ -4,7 +4,7 @@ import android.os.Handler
 import com.alibaba.android.arouter.launcher.ARouter
 import com.xyuan.wanandroid.R
 import com.xyuan.wanandroid.base.BaseActivity
-import com.xyuan.wanandroid.util.PathManager
+import com.xyuan.wanandroid.constant.PathManager
 import kotlinx.android.synthetic.main.activity_splash.*
 
 

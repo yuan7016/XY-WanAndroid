@@ -164,16 +164,16 @@ abstract class BaseLazyLoadFragment : BaseFragment(){
         }
     }
 
-    fun onFragmentFirstVisible() {
+    open fun onFragmentFirstVisible() {
         LogUtils.e(javaClass.simpleName + "  对用户第一次可见")
 
     }
 
-    fun onFragmentShow() {
+    open fun onFragmentShow() {
         LogUtils.e(javaClass.simpleName + "  对用户可见")
     }
 
-    fun onFragmentHide() {
+    open fun onFragmentHide() {
         LogUtils.e(javaClass.simpleName + "  对用户不可见")
     }
 
