@@ -1,4 +1,4 @@
-package com.xyuan.wanandroid.home
+package com.xyuan.wanandroid.fragments
 
 import android.util.Log
 import android.view.View

@@ -10,15 +10,15 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.xyuan.wanandroid.R
+import com.xyuan.wanandroid.adapter.MainFragmentPagerAdapter
 import com.xyuan.wanandroid.base.BaseActivity
-import com.xyuan.wanandroid.home.HomeFragment
-import com.xyuan.wanandroid.system.ProjectFragment
-import com.xyuan.wanandroid.system.SystemFragment
-import com.xyuan.wanandroid.system.WechatFragment
+import com.xyuan.wanandroid.fragments.HomeFragment
+import com.xyuan.wanandroid.fragments.ProjectFragment
+import com.xyuan.wanandroid.fragments.SystemFragment
+import com.xyuan.wanandroid.fragments.WechatFragment
 import com.xyuan.wanandroid.util.BottomNavigationViewUtil
 import com.xyuan.wanandroid.constant.PathManager
 import kotlinx.android.synthetic.main.activity_main.*
-import nmr.kmbb.smartmedical.adapter.MainFragmentPagerAdapter
 import java.util.*
 
 /**

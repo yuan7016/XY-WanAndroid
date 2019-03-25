@@ -68,7 +68,7 @@ abstract class BaseXYDialog<T : BaseXYDialog<T>> : DialogFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         super.onCreateView(inflater, container, savedInstanceState)
         //Clear the title of Android4.4
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog?.requestWindowFeature(Window.FEATURE_NO_TITLE)
         return when {
             baseParams.layoutRes > 0 -> inflater.inflate(baseParams.layoutRes, container)
             baseParams.view != null -> baseParams.view!!
@@ -120,7 +120,7 @@ abstract class BaseXYDialog<T : BaseXYDialog<T>> : DialogFragment() {
         windowManager?.defaultDisplay?.getSize(point)
 
         //Set window
-        dialog.window?.let {
+        dialog?.window?.let {
             val params = it.attributes
             params.gravity = baseParams.gravity
             it.attributes
@@ -152,8 +152,7 @@ abstract class BaseXYDialog<T : BaseXYDialog<T>> : DialogFragment() {
                 baseParams.heightDp > 0f -> params.height =
                         dp2px(
                             mContext,
-                            baseParams.heightDp
-                        )
+                            baseParams.heightDp)
             }
             //Set Window verticalMargin
             params.verticalMargin = baseParams.verticalMargin
@@ -171,15 +170,15 @@ abstract class BaseXYDialog<T : BaseXYDialog<T>> : DialogFragment() {
         if (!baseParams.cancelable) {
             isCancelable = baseParams.cancelable
         } else {
-            dialog.setCanceledOnTouchOutside(baseParams.cancelableOutside)
+            dialog?.setCanceledOnTouchOutside(baseParams.cancelableOutside)
         }
     }
 
-    override fun onDismiss(dialog: DialogInterface?) {
+
+    override fun onDismiss(dialog: DialogInterface) {
         if (baseParams.needKeyboardViewId != 0) {
             val editText = view?.findViewById<EditText>(baseParams.needKeyboardViewId)
-            val imm = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
-                    ?: return
+            val imm = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager ?: return
             imm.hideSoftInputFromWindow(editText?.windowToken, 0)
         }
         super.onDismiss(dialog)
@@ -295,7 +294,7 @@ abstract class BaseXYDialog<T : BaseXYDialog<T>> : DialogFragment() {
     }
 
     fun show(): T {
-        show(baseParams.fragmentManager, baseParams.tag)
+        show(baseParams.fragmentManager!!, baseParams.tag)
         return this as T
     }
 

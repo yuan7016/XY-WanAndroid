@@ -13,6 +13,7 @@
             android:id="@+id/app_bar"
             android:layout_width="match_parent"
             android:layout_height="220dp"
+            android:background="@color/White_FFFFFF"
             android:theme="@style/AppTheme.AppBarOverlay">
 
             <com.google.android.material.appbar.CollapsingToolbarLayout
@@ -21,21 +22,22 @@
                 android:layout_height="wrap_content"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-                <ImageView
+
+                <com.xyuan.xybanner.Banner
+                    android:id="@+id/banner"
                     android:layout_width="match_parent"
-                    android:layout_height="180dp"
-                    android:src="@drawable/iv_screen_bg3"
-                    android:scaleType="fitXY" />
+                    android:layout_height="180dp"/>
+
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:text="最新博文"
-                android:textColor="@color/Black_333333"
                 android:background="@color/White_FFFFFF"
                 android:gravity="center"
+                android:text="最新博文"
+                android:textColor="@color/Black_333333"
                 android:textSize="15sp" />
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -57,8 +59,8 @@
             android:id="@+id/fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/fab_margin"
             android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/fab_margin"
             app:srcCompat="@android:drawable/ic_dialog_email" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

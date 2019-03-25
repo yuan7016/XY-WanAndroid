@@ -21,19 +21,4 @@ object AppConstant {
      */
     const val CACHE_MAX_SIZE = (20 * 1024 * 1024).toLong()
 
-
-    /**
-     * 注册
-     */
-    const val USER_REGISTER_URL = "/user/register"
-    /**
-     * 登录
-     */
-    const val USER_LOGIN_URL = "/user/login"
-    /**
-     * 退出登录
-     */
-    const val USER_LOGIN_OUT_URL = "/user/logout/json"
-
-
 }

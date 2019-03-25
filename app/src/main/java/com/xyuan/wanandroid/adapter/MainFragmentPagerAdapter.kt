@@ -1,4 +1,4 @@
-package nmr.kmbb.smartmedical.adapter
+package com.xyuan.wanandroid.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -9,7 +9,7 @@ import androidx.fragment.app.FragmentPagerAdapter
  * Created by YuanZhiQiang on 2019/2/26
  * desc:
  */
-class MainFragmentPagerAdapter(fm: FragmentManager?, fragments: ArrayList<Fragment>?) : FragmentPagerAdapter(fm) {
+class MainFragmentPagerAdapter(fm: FragmentManager, fragments: ArrayList<Fragment>) : FragmentPagerAdapter(fm) {
 
     private var mFragments: ArrayList<Fragment>? = fragments
 

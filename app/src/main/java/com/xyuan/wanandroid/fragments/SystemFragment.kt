@@ -1,4 +1,4 @@
-package com.xyuan.wanandroid.system
+package com.xyuan.wanandroid.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,11 +9,11 @@ import com.xyuan.wanandroid.base.BaseFragment
 
 /**
  * Created by YuanZhiQiang on 2019/03/08 15:31.
- * 公众号
+ * 体系
  */
-class WechatFragment : BaseFragment(){
+class SystemFragment : BaseFragment(){
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragement_wechat,container,false)
+        return inflater.inflate(R.layout.fragement_system,container,false)
     }
 }

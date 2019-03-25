@@ -2,13 +2,18 @@ package com.xyuan.wanandroid.ui
 
 import android.text.Editable
 import android.text.TextUtils
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.hjq.toast.ToastUtils
 import com.xyuan.wanandroid.R
 import com.xyuan.wanandroid.base.BaseActivity
-import com.xyuan.wanandroid.listener.XYTextWatcher
 import com.xyuan.wanandroid.constant.PathManager
+import com.xyuan.wanandroid.data.LoginResponse
+import com.xyuan.wanandroid.listener.XYTextWatcher
+import com.xyuan.wanandroid.util.AppLog
+import com.xyuan.wanandroid.viewmodel.LoginRegisterViewModel
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.common_tool_bar_layout.*
 
@@ -19,6 +24,10 @@ import kotlinx.android.synthetic.main.common_tool_bar_layout.*
  */
 @Route(path= PathManager.LOGIN_ACTIVITY_PATH)
 class LoginActivity : BaseActivity(){
+
+    private val mViewModel : LoginRegisterViewModel by lazy {
+        ViewModelProviders.of(this).get(LoginRegisterViewModel::class.java)
+    }
 
     override fun getContentLayoutId(): Int {
         return R.layout.activity_login
@@ -86,7 +95,7 @@ class LoginActivity : BaseActivity(){
             textAccountInputLayout.isErrorEnabled = false
             textPasswordInputLayout.isErrorEnabled = false
             // login.
-            ToastUtils.show("Login")
+            toLogin(accountStr,passwordStr)
         }
 
         if (TextUtils.isEmpty(accountStr)) {
@@ -99,5 +108,20 @@ class LoginActivity : BaseActivity(){
             textPasswordInputLayout.error = getString(com.xyuan.wanandroid.R.string.error_invalid_password)
         }
 
+    }
+
+    private fun toLogin(accountStr: String, passwordStr: String) {
+
+        val liveData = mViewModel.getLoginInfo(accountStr, passwordStr)
+
+
+        liveData.observe(this,object : Observer<LoginResponse>{
+            override fun onChanged(t: LoginResponse?) {
+
+                ToastUtils.show("登录成功")
+                AppLog.e("==toLogin==${t.toString()}")
+            }
+
+        })
     }
 }
