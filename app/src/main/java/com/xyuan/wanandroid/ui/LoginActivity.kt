@@ -2,6 +2,7 @@ package com.xyuan.wanandroid.ui
 
 import android.text.Editable
 import android.text.TextUtils
+import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.alibaba.android.arouter.facade.annotation.Route
@@ -9,10 +10,13 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.hjq.toast.ToastUtils
 import com.xyuan.wanandroid.R
 import com.xyuan.wanandroid.base.BaseActivity
+import com.xyuan.wanandroid.constant.AppConstant
 import com.xyuan.wanandroid.constant.PathManager
 import com.xyuan.wanandroid.data.LoginResponse
+import com.xyuan.wanandroid.listener.RequestStateSubscriber
 import com.xyuan.wanandroid.listener.XYTextWatcher
 import com.xyuan.wanandroid.util.AppLog
+import com.xyuan.wanandroid.util.SharedPreferencesUtil
 import com.xyuan.wanandroid.viewmodel.LoginRegisterViewModel
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.common_tool_bar_layout.*
@@ -110,16 +114,35 @@ class LoginActivity : BaseActivity(){
 
     }
 
+    /**
+     * 登录
+     */
     private fun toLogin(accountStr: String, passwordStr: String) {
 
-        val liveData = mViewModel.getLoginInfo(accountStr, passwordStr)
+        val liveData = mViewModel.getLoginInfo(accountStr, passwordStr,object : RequestStateSubscriber{
+            override fun onStart() {
+                progressBarLogin.visibility = View.VISIBLE
+            }
+
+            override fun onComplete() {
+                progressBarLogin.visibility = View.GONE
+            }
+
+        })
 
 
         liveData.observe(this,object : Observer<LoginResponse>{
-            override fun onChanged(t: LoginResponse?) {
 
-                ToastUtils.show("登录成功")
-                AppLog.e("==toLogin==${t.toString()}")
+            override fun onChanged(response: LoginResponse?) {
+                if (response != null){
+                    ToastUtils.show("登录成功")
+                    SharedPreferencesUtil.setPreferInt(AppConstant.USER_ID_KEY,response.id)
+                    SharedPreferencesUtil.setPreferString(AppConstant.USER_NAME_KEY,response.username)
+
+
+                    finish()
+                }
+
             }
 
         })

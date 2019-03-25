@@ -53,12 +53,13 @@
                     android:src="@mipmap/ic_launcher" />
 
                 <TextView
+                    android:id="@+id/tvUserName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/ivUserImg"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="5dp"
-                    android:text="name"
+                    android:text="请登录"
                     android:textColor="@color/White_FFFFFF"
                     android:textSize="16sp" />
             </RelativeLayout>

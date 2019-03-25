@@ -2,12 +2,20 @@ package com.xyuan.wanandroid.ui
 
 import android.text.Editable
 import android.text.TextUtils
+import android.view.View
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.hjq.toast.ToastUtils
 import com.xyuan.wanandroid.R
 import com.xyuan.wanandroid.base.BaseActivity
 import com.xyuan.wanandroid.listener.XYTextWatcher
 import com.xyuan.wanandroid.constant.PathManager
+import com.xyuan.wanandroid.data.LoginResponse
+import com.xyuan.wanandroid.listener.RequestStateSubscriber
+import com.xyuan.wanandroid.util.AppLog
+import com.xyuan.wanandroid.viewmodel.LoginRegisterViewModel
+import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_register.*
 import kotlinx.android.synthetic.main.common_tool_bar_layout.*
 
@@ -17,6 +25,10 @@ import kotlinx.android.synthetic.main.common_tool_bar_layout.*
  */
 @Route(path= PathManager.REGISTER_ACTIVITY_PATH)
 class RegisterActivity : BaseActivity(){
+
+    private val mViewModel : LoginRegisterViewModel by lazy {
+        ViewModelProviders.of(this).get(LoginRegisterViewModel::class.java)
+    }
 
     override fun getContentLayoutId(): Int {
         return R.layout.activity_register
@@ -83,7 +95,7 @@ class RegisterActivity : BaseActivity(){
 
         if (!TextUtils.isEmpty(userName) && !TextUtils.isEmpty(password) && !TextUtils.isEmpty(confirmPassword)){
             //register
-            ToastUtils.show("Register")
+            toRegister(userName,password,confirmPassword)
         }else{
 
             if (TextUtils.isEmpty(userName)) {
@@ -105,9 +117,33 @@ class RegisterActivity : BaseActivity(){
 
     }
 
+
     override fun initData() {
 
     }
 
+
+    private fun toRegister(userName: String, password: String, confirmPassword: String) {
+
+        val liveData = mViewModel.getRegisterInfo(userName, password,confirmPassword,object : RequestStateSubscriber {
+            override fun onStart() {
+                progressBarRegister.visibility = View.VISIBLE
+            }
+
+            override fun onComplete() {
+                progressBarRegister.visibility = View.GONE
+            }
+
+        })
+
+
+        liveData.observe(this, Observer<LoginResponse> { t ->
+
+            ToastUtils.show("注册成功")
+            AppLog.e("==toLogin==${t.toString()}")
+
+            finish()
+        })
+    }
 
 }

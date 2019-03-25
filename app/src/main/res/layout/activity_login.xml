@@ -25,70 +25,85 @@
         android:textSize="14sp" />
 
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textAccountInputLayout"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:errorEnabled="true"
-        android:layout_margin="20dp">
+        android:layout_height="wrap_content">
 
-        <AutoCompleteTextView
-            android:id="@+id/actvAccount"
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textAccountInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/prompt_account"
-            android:inputType="text"
-            android:maxLines="1"
-            android:paddingStart="5dp"
-            android:paddingEnd="5dp"
-            android:singleLine="true" />
+            android:layout_margin="20dp"
+            app:errorEnabled="true">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <AutoCompleteTextView
+                android:id="@+id/actvAccount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/prompt_account"
+                android:inputType="text"
+                android:maxLines="1"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
+                android:singleLine="true" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textPasswordInputLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:errorEnabled="true"
-        app:passwordToggleEnabled="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp">
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
-            android:id="@+id/etPassword"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textPasswordInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/prompt_password"
-            android:inputType="textPassword"
-            android:maxLines="1"
-            android:paddingStart="5dp"
-            android:paddingEnd="5dp"
-            android:singleLine="true" />
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_below="@id/textAccountInputLayout"
+            app:errorEnabled="true"
+            app:passwordToggleEnabled="true">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <EditText
+                android:id="@+id/etPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/prompt_password"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
+                android:singleLine="true" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <ProgressBar
+            android:id="@+id/progressBarLogin"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            android:layout_width="55dp"
+            android:layout_height="55dp" />
+
+    </RelativeLayout>
+
 
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="250dp"
         android:layout_height="45dp"
         android:layout_marginTop="45dp"
-        android:elevation="3dp"
         android:background="@drawable/bg_shape_blue_btn"
+        android:elevation="3dp"
         android:text="@string/login"
         android:textColor="@color/White_FFFFFF"
         android:textSize="16sp" />
-
 
 
     <TextView
         android:id="@+id/tvToRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="4dp"
-        android:gravity="center_vertical"
-        android:drawableStart="@drawable/icon_alert"
-        android:text="没有账号？去注册"
         android:layout_marginTop="15dp"
-        android:textSize="14sp"
-        />
+        android:drawableStart="@drawable/icon_alert"
+        android:gravity="center_vertical"
+        android:padding="4dp"
+        android:text="没有账号？去注册"
+        android:textSize="14sp" />
 </LinearLayout>

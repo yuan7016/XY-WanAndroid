@@ -1,5 +1,6 @@
 package com.xyuan.wanandroid.ui
 
+import android.content.Intent
 import android.view.KeyEvent
 import android.view.Menu
 import android.view.MenuItem
@@ -12,12 +13,15 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.xyuan.wanandroid.R
 import com.xyuan.wanandroid.adapter.MainFragmentPagerAdapter
 import com.xyuan.wanandroid.base.BaseActivity
+import com.xyuan.wanandroid.constant.AppConstant
 import com.xyuan.wanandroid.fragments.HomeFragment
 import com.xyuan.wanandroid.fragments.ProjectFragment
 import com.xyuan.wanandroid.fragments.SystemFragment
 import com.xyuan.wanandroid.fragments.WechatFragment
 import com.xyuan.wanandroid.util.BottomNavigationViewUtil
 import com.xyuan.wanandroid.constant.PathManager
+import com.xyuan.wanandroid.data.LoginResponse
+import com.xyuan.wanandroid.util.SharedPreferencesUtil
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
@@ -54,6 +58,7 @@ class MainActivity : BaseActivity() {
         false
     }
 
+    private val LOGIN_REQUEST_CODE = 1000
 
     override fun getContentLayoutId(): Int {
         return R.layout.activity_main
@@ -88,7 +93,7 @@ class MainActivity : BaseActivity() {
 
         ivUserImg.setOnClickListener {
             //login UI
-            ARouter.getInstance().build(PathManager.LOGIN_ACTIVITY_PATH).navigation()
+            ARouter.getInstance().build(PathManager.LOGIN_ACTIVITY_PATH).navigation(this,LOGIN_REQUEST_CODE)
         }
 
         ll_setting.setOnClickListener {
@@ -121,6 +126,20 @@ class MainActivity : BaseActivity() {
             else -> super.onOptionsItemSelected(item)
         }
     }
+
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        when(requestCode){
+            LOGIN_REQUEST_CODE->{
+                val userName = SharedPreferencesUtil.getPreferString(AppConstant.USER_NAME_KEY)
+
+                tvUserName.text = userName
+            }
+        }
+    }
+
 
 
     //记录用户首次点击返回键的时间

@@ -51,7 +51,7 @@ public class SharedPreferencesUtil {
      * @param key
      * @param value
      */
-    public static void setPreferStr(String key, String value) {
+    public static void setPreferString(String key, String value) {
         Editor editor = sharedPreferences.edit();
         editor.putString(key, value);
         editor.apply();
@@ -63,7 +63,7 @@ public class SharedPreferencesUtil {
      * @param key
      * @return
      */
-    public static String getPreferStr(String key) {
+    public static String getPreferString(String key) {
         return sharedPreferences.getString(key, "");
     }
 
@@ -78,9 +78,6 @@ public class SharedPreferencesUtil {
         editor.apply();
     }
 
-    public static boolean getPreferBool2(String key) {
-        return sharedPreferences.getBoolean(key, true);
-    }
 
     public static boolean getPreferBool(String key) {
         return sharedPreferences.getBoolean(key, false);
@@ -142,7 +139,7 @@ public class SharedPreferencesUtil {
      */
     public static boolean clearAllSPData(){
         Editor editor = sharedPreferences.edit();
-//        editor.remove()
+        editor.clear();
 
         return editor.commit();
     }

@@ -16,7 +16,7 @@ class MainApplication : Application() {
     var IS_DEBUG = true
 
     companion object {
-        lateinit var mContext : Context
+        private lateinit var mContext : Context
 
         fun getContext() : Context {
             return mContext

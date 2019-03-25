@@ -21,4 +21,18 @@ object AppConstant {
      */
     const val CACHE_MAX_SIZE = (20 * 1024 * 1024).toLong()
 
+    /**
+     * Cookie
+     */
+    const val COOKIE_KEY = "Cookie"
+
+    /**
+     * user_id
+     */
+    const val USER_ID_KEY = "user_id"
+
+    /**
+     * user_name
+     */
+    const val USER_NAME_KEY = "user_name"
 }

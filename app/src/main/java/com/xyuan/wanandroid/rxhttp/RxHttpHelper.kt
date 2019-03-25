@@ -2,6 +2,8 @@ package com.xyuan.wanandroid.rxhttp
 
 
 import com.xyuan.wanandroid.constant.AppConstant
+import com.xyuan.wanandroid.rxhttp.interceptor.AddCookieInterceptor
+import com.xyuan.wanandroid.rxhttp.interceptor.ReceiveCookieInterceptor
 import com.xyuan.wanandroid.util.AppLog
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -27,8 +29,6 @@ object RxHttpHelper{
     private val loggingInterceptor =
         HttpLoggingInterceptor(HttpLoggingInterceptor.Logger { message -> AppLog.d("=RxHttp=", message) })
             .setLevel(HttpLoggingInterceptor.Level.BODY)
-
-
 
 
     /**
@@ -63,6 +63,8 @@ object RxHttpHelper{
                     .readTimeout(AppConstant.CONNECT_OUT_TIME.toLong(), TimeUnit.SECONDS)
                     .writeTimeout(AppConstant.CONNECT_OUT_TIME.toLong(), TimeUnit.SECONDS)
                     .addInterceptor(loggingInterceptor)
+                    .addInterceptor(ReceiveCookieInterceptor())
+                    .addInterceptor(AddCookieInterceptor())
                 //  .cache(new Cache(mCacheFile, AppConstant.CACHE_MAX_SIZE))  //设置缓存
                     .build()
             }
