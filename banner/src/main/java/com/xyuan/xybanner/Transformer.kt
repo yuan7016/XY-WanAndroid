@@ -13,6 +13,5 @@ object Transformer {
     var Accordion: Class<out PageTransformer> = AccordionTransformer::class.java
     var ForegroundToBackground: Class<out PageTransformer> = ForegroundToBackgroundTransformer::class.java
     var CubeIn: Class<out PageTransformer> = CubeInTransformer::class.java
-    var Stack: Class<out PageTransformer> = StackTransformer::class.java
     var Tablet: Class<out PageTransformer> = TabletTransformer::class.java
 }

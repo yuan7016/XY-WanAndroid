@@ -1,7 +1,6 @@
 package com.xyuan.xybanner
 
 import android.content.Context
-import android.content.res.TypedArray
 import android.util.AttributeSet
 import android.util.DisplayMetrics
 import android.util.Log
@@ -14,11 +13,9 @@ import androidx.viewpager.widget.ViewPager
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import androidx.viewpager.widget.ViewPager.PageTransformer
 import com.xyuan.xybanner.listener.OnBannerClickListener
-import com.xyuan.xybanner.loader.ImageLoader
 import com.xyuan.xybanner.loader.ImageLoaderInterface
 import com.xyuan.xybanner.view.BannerViewPager
-import java.lang.reflect.Field
-import java.util.ArrayList
+import java.util.*
 
 /**
  * Banner for androidx
