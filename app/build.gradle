@@ -62,5 +62,7 @@ dependencies {
     //ToastUtil
     implementation 'com.hjq:toast:5.0'
     implementation project(':banner')
-    implementation "androidx.lifecycle:lifecycle-extensions:2.0.0"
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
+    implementation project(':statuslib')
+    implementation project(':refresh-layout')
 }

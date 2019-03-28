@@ -39,7 +39,7 @@ class SplashActivity : BaseActivity(){
                     ARouter.getInstance().build(PathManager.MAIN_ACTIVITY_PATH).navigation()
 
                     finish()
-                }, 1111)
+                }, 1000)
             }
             hasLoaded = true
         }

@@ -135,7 +135,7 @@ public class LauncherAnimationView extends RelativeLayout {
             public void run() {
                 showLogo();
             }
-        }, 2222);
+        }, 2000);
     }
 
     private void setAnimation(final ImageView target, ViewPath path) {

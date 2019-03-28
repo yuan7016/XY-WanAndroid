@@ -14,10 +14,10 @@ import com.xyuan.wanandroid.R
 import com.xyuan.wanandroid.adapter.MainFragmentPagerAdapter
 import com.xyuan.wanandroid.base.BaseActivity
 import com.xyuan.wanandroid.constant.AppConstant
-import com.xyuan.wanandroid.fragments.HomeFragment
-import com.xyuan.wanandroid.fragments.ProjectFragment
-import com.xyuan.wanandroid.fragments.SystemFragment
-import com.xyuan.wanandroid.fragments.WechatFragment
+import com.xyuan.wanandroid.ui.fragments.HomeFragment
+import com.xyuan.wanandroid.ui.fragments.ProjectFragment
+import com.xyuan.wanandroid.ui.fragments.SystemFragment
+import com.xyuan.wanandroid.ui.fragments.WechatFragment
 import com.xyuan.wanandroid.util.BottomNavigationViewUtil
 import com.xyuan.wanandroid.constant.PathManager
 import com.xyuan.wanandroid.data.LoginResponse
@@ -74,10 +74,19 @@ class MainActivity : BaseActivity() {
     }
 
     override fun initData() {
-        val fragmentList: ArrayList<Fragment> = arrayListOf(HomeFragment(), SystemFragment(), WechatFragment(), ProjectFragment())
+        val fragmentList: ArrayList<Fragment> = arrayListOf(
+            HomeFragment(),
+            SystemFragment(),
+            WechatFragment(),
+            ProjectFragment()
+        )
         viewPagerMain.adapter = MainFragmentPagerAdapter(supportFragmentManager, fragmentList)
         navigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         initListener()
+
+        val userName = SharedPreferencesUtil.getPreferString(AppConstant.USER_NAME_KEY,"请登录")
+
+        tvUserName.text = userName
     }
 
 

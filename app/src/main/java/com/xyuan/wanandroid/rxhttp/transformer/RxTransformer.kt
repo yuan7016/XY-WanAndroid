@@ -36,26 +36,23 @@ object RxTransformer {
     </T> */
     fun <T> rxCompose(): ObservableTransformer<BaseResponse<T>, T> {
         return ObservableTransformer { upstream ->
-            upstream.flatMap(object : Function<BaseResponse<T>, ObservableSource<T>> {
+            upstream.flatMap(Function<BaseResponse<T>, ObservableSource<T>> { tBaseResponseBean ->
+                // 根据后台基本格式进行转换
+                if (tBaseResponseBean != null && tBaseResponseBean.errorCode == 0) {
+                    Observable.create { emitter ->
+                        try {
+                            emitter.onNext(tBaseResponseBean.data)
+                            emitter.onComplete()
 
-                override fun apply(tBaseResponseBean: BaseResponse<T>): ObservableSource<T> {
-                    // 根据后台基本格式进行转换
-                    return if (tBaseResponseBean != null && tBaseResponseBean.errorCode == 0) {
-                        Observable.create { emitter ->
-                            try {
-                                emitter.onNext(tBaseResponseBean.data)
-                                emitter.onComplete()
-
-                            } catch (e: Exception) {
-                                emitter.onError(e)
-                            }
+                        } catch (e: Exception) {
+                            emitter.onError(e)
                         }
-                    } else {
-                        Observable.create { emitter ->
-                            emitter.onError(
-                                ApiException(tBaseResponseBean.errorCode, tBaseResponseBean.errorMsg!!)
-                            )
-                        }
+                    }
+                } else {
+                    Observable.create { emitter ->
+                        emitter.onError(
+                            ApiException(tBaseResponseBean.errorCode, tBaseResponseBean.errorMsg!!)
+                        )
                     }
                 }
             }).subscribeOn(Schedulers.io())

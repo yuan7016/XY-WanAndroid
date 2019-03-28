@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:layout_marginStart="10dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginEnd="10dp"
+    android:layout_marginBottom="5dp"
+    android:background="?attr/selectableItemBackground"
+    app:cardCornerRadius="5dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/tv_item_home_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="Title"
+            android:textColor="@color/Black_333333"
+            android:textSize="18sp" />
+
+
+        <TextView
+            android:id="@+id/tv_item_home_author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="8dp"
+            android:text="作者:"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_item_home_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="8dp"
+            android:text="author"
+            android:layout_toEndOf="@id/tv_item_home_author"
+            android:textColor="@color/colorPrimary"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_item_home_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="25dp"
+            android:layout_marginBottom="10dp"
+            android:layout_toStartOf="@id/iv_item_home_favorite"
+            android:layout_marginEnd="12dp"
+            android:text="yyyy-MM-dd"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:id="@+id/iv_item_home_favorite"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:background="?attr/selectableItemBackground"
+            android:layout_marginBottom="2dp"
+            android:padding="5dp"
+            android:src="@drawable/icon_un_favorite_blue" />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

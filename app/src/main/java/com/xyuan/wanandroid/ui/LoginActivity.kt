@@ -131,20 +131,15 @@ class LoginActivity : BaseActivity(){
         })
 
 
-        liveData.observe(this,object : Observer<LoginResponse>{
-
-            override fun onChanged(response: LoginResponse?) {
-                if (response != null){
-                    ToastUtils.show("登录成功")
-                    SharedPreferencesUtil.setPreferInt(AppConstant.USER_ID_KEY,response.id)
-                    SharedPreferencesUtil.setPreferString(AppConstant.USER_NAME_KEY,response.username)
+        liveData.observe(this, Observer<LoginResponse> { response ->
+            if (response != null){
+                ToastUtils.show("登录成功")
+                SharedPreferencesUtil.setPreferInt(AppConstant.USER_ID_KEY,response.id)
+                SharedPreferencesUtil.setPreferString(AppConstant.USER_NAME_KEY,response.username)
 
 
-                    finish()
-                }
-
+                finish()
             }
-
         })
     }
 }

@@ -68,6 +68,17 @@ public class SharedPreferencesUtil {
     }
 
     /**
+     * 根据key获取字符串value
+     *
+     * @param key
+     * @param defaultStr
+     * @return
+     */
+    public static String getPreferString(String key,String defaultStr) {
+        return sharedPreferences.getString(key, defaultStr);
+    }
+
+    /**
      * 保存对象的键值对
      *
      * @param t
