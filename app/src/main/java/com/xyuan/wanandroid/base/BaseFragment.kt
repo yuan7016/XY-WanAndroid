@@ -33,20 +33,19 @@ open class BaseFragment : Fragment(){
     open fun initStatusLayoutManager(view : View){
         mStatusLayoutManager = StatusLayoutManager.Builder(view)
             .setOnStatusChildClickListener(object : OnStatusChildClickListener {
-
-                override fun onEmptyChildClick(view: View?) {
+                override fun onEmptyChildClick(view: View) {
                     mStatusLayoutManager?.showLoadingLayout()
 
                     getData()
                 }
 
-                override fun onErrorChildClick(view: View?) {
+                override fun onErrorChildClick(view: View) {
                     mStatusLayoutManager?.showLoadingLayout()
 
                     getData()
                 }
 
-                override fun onCustomerChildClick(view: View?) {
+                override fun onCustomerChildClick(view: View) {
 
                 }
 
