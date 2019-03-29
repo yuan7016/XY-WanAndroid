@@ -1,1 +1,1 @@
-include ':app', ':banner', ':statuslib', ':refresh-layout'
+include ':app', ':banner', ':statuslib'

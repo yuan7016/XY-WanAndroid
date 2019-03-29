@@ -46,7 +46,7 @@ open class BaseFragment : Fragment(){
                 }
 
                 override fun onCustomerChildClick(view: View) {
-
+                        //onCustomerChildClick
                 }
 
             }).build()

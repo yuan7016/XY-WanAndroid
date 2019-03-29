@@ -4,7 +4,7 @@ package com.xyuan.xybanner.transformer
 import android.view.View
 import androidx.viewpager.widget.ViewPager
 
-open abstract class ABaseTransformer : ViewPager.PageTransformer {
+abstract class ABaseTransformer : ViewPager.PageTransformer {
 
     /**
      * Indicates if the default animations of the view pager should be used.
