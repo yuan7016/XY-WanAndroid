@@ -1,9 +1,6 @@
 package com.xyuan.wanandroid.rxhttp
 
-import com.xyuan.wanandroid.data.ArticleResponse
-import com.xyuan.wanandroid.data.BannerBean
-import com.xyuan.wanandroid.data.BaseResponse
-import com.xyuan.wanandroid.data.LoginResponse
+import com.xyuan.wanandroid.data.*
 import io.reactivex.Observable
 import retrofit2.http.*
 
@@ -53,4 +50,10 @@ interface ApiService {
      */
     @GET("/banner/json")
     fun getBannerData() : Observable<BaseResponse<ArrayList<BannerBean>>>
+
+    /**
+     * 体系
+     */
+    @GET("/tree/json")
+    fun getSystemTree() : Observable<BaseResponse<ArrayList<SystemBean>>>
 }
