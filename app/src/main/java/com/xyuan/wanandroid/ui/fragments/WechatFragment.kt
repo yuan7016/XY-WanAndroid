@@ -47,7 +47,6 @@ class WechatFragment : BaseLazyLoadFragment(){
     }
 
     private fun getWxNameData(){
-        mStatusLayoutManager?.showLoadingLayout()
 
         mViewModel.getWxName().observe(this,object : BaseLiveDataObserver<ArrayList<WechatNameBean>>(){
             override fun onSuccess(response: ArrayList<WechatNameBean>) {
