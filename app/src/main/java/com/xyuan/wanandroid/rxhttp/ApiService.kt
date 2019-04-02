@@ -20,7 +20,7 @@ interface ApiService {
     @FormUrlEncoded
     fun register(@Field("username") username: String,
                  @Field("password") password: String,
-                 @Field("repassword") repassowrd: String) : Observable<BaseResponse<LoginResponse>>
+                 @Field("repassword") repassowrd: String): Observable<BaseResponse<LoginResponse>>
 
     /**
      * 登录
@@ -28,14 +28,14 @@ interface ApiService {
     @POST("/user/login")
     @FormUrlEncoded
     fun login(@Field("username") username: String,
-                 @Field("password") password: String) : Observable<BaseResponse<LoginResponse>>
+              @Field("password") password: String): Observable<BaseResponse<LoginResponse>>
 
 
     /**
      * 退出登录
      */
     @GET("/user/logout/json")
-    fun loginOut() : Observable<BaseResponse<LoginResponse>>
+    fun loginOut(): Observable<BaseResponse<LoginResponse>>
 
 
     /**
@@ -43,20 +43,20 @@ interface ApiService {
      * @param page page
      */
     @GET("/article/list/{page}/json")
-    fun getArticleData(@Path("page") page : Int) : Observable<BaseResponse<ArticleResponse>>
+    fun getArticleData(@Path("page") page: Int): Observable<BaseResponse<ArticleResponse>>
 
     /**
      * 首页Banner
      */
     @GET("/banner/json")
-    fun getBannerData() : Observable<BaseResponse<ArrayList<BannerBean>>>
+    fun getBannerData(): Observable<BaseResponse<ArrayList<BannerBean>>>
 
     /**
      * 收藏文章
      * @param id id
      */
     @POST("/lg/collect/{id}/json")
-    fun addCollectArticle(@Path("id") id: Int) : Observable<BaseResponse<EmptyResponse>>
+    fun addCollectArticle(@Path("id") id: Int): Observable<BaseResponse<EmptyResponse>>
 
     /**
      * 取消收藏文章
@@ -69,5 +69,19 @@ interface ApiService {
      * 体系
      */
     @GET("/tree/json")
-    fun getSystemTree() : Observable<BaseResponse<ArrayList<SystemBean>>>
+    fun getSystemTree(): Observable<BaseResponse<ArrayList<SystemBean>>>
+
+    /**
+     * 公众号名称
+     */
+    @GET("/wxarticle/chapters/json")
+    fun getWechatName(): Observable<BaseResponse<ArrayList<WechatNameBean>>>
+
+    /**
+     * 公众号文章
+     * @param id id
+     * @param id page
+     */
+    @GET("/wxarticle/list/{id}/{page}/json")
+    fun getWxArticle(@Path("id") id: Int, @Path("page") page: Int): Observable<BaseResponse<ArticleResponse>>
 }

@@ -52,6 +52,7 @@ class MainApplication : Application() {
         AutoSizeConfig.getInstance()
             //是否让框架支持自定义 Fragment 的适配参数, 由于这个需求是比较少见的, 所以须要使用者手动开启
             //如果没有这个需求建议不开启
+            .setLog(false)
             .setCustomFragment(true)
             .isExcludeFontScale = true
         //是否使用设备的实际尺寸做适配, 默认为 false, 如果设置为 false, 在以屏幕高度为基准进行适配时

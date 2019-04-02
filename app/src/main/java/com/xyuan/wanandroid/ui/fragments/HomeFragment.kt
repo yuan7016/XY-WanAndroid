@@ -173,7 +173,6 @@ class HomeFragment : BaseLazyLoadFragment(){
             override fun onEmpty() {
                 super.onEmpty()
                 currentPage = 0
-                AppLog.w("===getData====onEmpty")
                 mStatusLayoutManager?.showEmptyLayout()
             }
 
@@ -181,7 +180,6 @@ class HomeFragment : BaseLazyLoadFragment(){
                 super.onError(throwable)
                 currentPage = 0
                 smartRefreshLayout.finishRefresh()
-                AppLog.w("===getData====onError")
                 mStatusLayoutManager?.showErrorLayout()
             }
         })
