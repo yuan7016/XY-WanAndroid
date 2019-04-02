@@ -52,6 +52,20 @@ interface ApiService {
     fun getBannerData() : Observable<BaseResponse<ArrayList<BannerBean>>>
 
     /**
+     * 收藏文章
+     * @param id id
+     */
+    @POST("/lg/collect/{id}/json")
+    fun addCollectArticle(@Path("id") id: Int) : Observable<BaseResponse<EmptyResponse>>
+
+    /**
+     * 取消收藏文章
+     * @param id id
+     */
+    @POST("/lg/uncollect_originId/{id}/json")
+    fun unCollectArticle(@Path("id") id: Int): Observable<BaseResponse<EmptyResponse>>
+
+    /**
      * 体系
      */
     @GET("/tree/json")

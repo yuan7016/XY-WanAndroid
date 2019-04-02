@@ -2,6 +2,7 @@ package com.xyuan.wanandroid.rxhttp.transformer
 
 
 import com.xyuan.wanandroid.data.BaseResponse
+import com.xyuan.wanandroid.data.EmptyResponse
 import com.xyuan.wanandroid.rxhttp.exception.ApiException
 import io.reactivex.Observable
 import io.reactivex.ObservableSource
@@ -18,7 +19,7 @@ import io.reactivex.schedulers.Schedulers
 object RxTransformer {
 
 
-    fun <T> switchIOAndMainThread(): ObservableTransformer<T, T> {
+    fun <T> switchIOToMainThread(): ObservableTransformer<T, T> {
 
         return ObservableTransformer { upstream ->
             upstream.subscribeOn(Schedulers.io())

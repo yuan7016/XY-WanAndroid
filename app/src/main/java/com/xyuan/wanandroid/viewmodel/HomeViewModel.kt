@@ -2,12 +2,10 @@ package com.xyuan.wanandroid.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.xyuan.wanandroid.data.ArticleResponse
-import com.xyuan.wanandroid.data.BannerBean
-import com.xyuan.wanandroid.data.BaseResponse
-import com.xyuan.wanandroid.data.Resource
+import com.xyuan.wanandroid.data.*
 import com.xyuan.wanandroid.rxhttp.ApiService
 import com.xyuan.wanandroid.rxhttp.RxHttpHelper
+import com.xyuan.wanandroid.rxhttp.exception.ApiException
 import com.xyuan.wanandroid.rxhttp.rxcommon.CommonObserver
 import com.xyuan.wanandroid.rxhttp.transformer.RxTransformer
 import com.xyuan.wanandroid.util.AppLog
@@ -65,6 +63,57 @@ class HomeViewModel : ViewModel() {
                     }
 
                 })
+
+
+        return liveData
+    }
+
+    fun collectArticle(articleID : Int , hasCollected : Boolean) : MutableLiveData<Resource<EmptyResponse>>{
+        val liveData = MutableLiveData<Resource<EmptyResponse>>()
+
+        if (hasCollected){
+            apiService
+                .unCollectArticle(articleID)
+                .compose(RxTransformer.switchIOToMainThread())
+                .subscribe(object : CommonObserver<BaseResponse<EmptyResponse>>(){
+                    override fun onStart() {
+                        //onStart
+                    }
+                    override fun onSuccess(response: BaseResponse<EmptyResponse>) {
+                        if (response != null && response.isSuccess()){
+                            //data 为空
+                            liveData.postValue(Resource(Resource.ERROR,EmptyResponse(true),null))
+                        }
+                    }
+                    override fun onError(e: Throwable) {
+                        super.onError(e)
+                        liveData.postValue(Resource(Resource.ERROR,null,e))
+                    }
+                })
+        }else{
+            apiService
+                .addCollectArticle(articleID)
+                .compose(RxTransformer.switchIOToMainThread())
+                .subscribe(object : CommonObserver<BaseResponse<EmptyResponse>>(){
+                    override fun onStart() {
+                        //onStart
+                    }
+                    override fun onSuccess(response: BaseResponse<EmptyResponse>) {
+                        if (response != null && response.isSuccess()){
+                            //data 为空
+                            liveData.postValue(Resource(Resource.ERROR,EmptyResponse(true),null))
+                        }else{
+                            onError(ApiException(response.errorCode, response.errorMsg!!))
+                        }
+                    }
+
+                    override fun onError(e: Throwable) {
+                        super.onError(e)
+                        liveData.postValue(Resource(Resource.ERROR,null,e))
+                    }
+
+                })
+        }
 
 
         return liveData

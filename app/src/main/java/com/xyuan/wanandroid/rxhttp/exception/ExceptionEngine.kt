@@ -42,8 +42,9 @@ object ExceptionEngine {
             return ex
         } else {  //未知错误
             //            ex = new ApiException(e, UN_KNOWN_ERROR);
-            //            ex.setMsg("未知错误");
-            ex = e as ApiException
+            ex = ApiException(e, UN_KNOWN_ERROR)
+            ex.msg = e.message
+
             return ex
         }
     }

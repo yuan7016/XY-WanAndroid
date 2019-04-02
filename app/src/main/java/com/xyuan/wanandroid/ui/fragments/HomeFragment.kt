@@ -11,6 +11,7 @@ import com.xyuan.wanandroid.adapter.HomeAdapter
 import com.xyuan.wanandroid.base.BaseLazyLoadFragment
 import com.xyuan.wanandroid.data.ArticleResponse
 import com.xyuan.wanandroid.data.BannerBean
+import com.xyuan.wanandroid.data.EmptyResponse
 import com.xyuan.wanandroid.listener.BaseLiveDataObserver
 import com.xyuan.wanandroid.util.AppLog
 import com.xyuan.wanandroid.util.GlideImageLoader
@@ -103,6 +104,36 @@ class HomeFragment : BaseLazyLoadFragment(){
             getMoreData()
         }
 
+
+        mAdapter.setOnItemChildClickListener { adapter, view, position ->
+            val articleData = articleList[position]
+
+            when (view.id){
+                R.id.iv_item_home_favorite  -> {  //收藏 或取消收藏
+
+                    mViewModel.collectArticle(articleData.id , articleData.collect).observe(this,object : BaseLiveDataObserver<EmptyResponse>(){
+                        override fun onSuccess(response: EmptyResponse) {
+                            AppLog.i("==收藏=collectArticle====onSuccess")
+                            if (response.success){
+                                val collectState = articleData.collect
+                                articleData.collect = !collectState
+                                mAdapter.setData(position,articleData)
+                                ToastUtils.show("操作成功")
+                            }
+
+                        }
+                        override fun onError(throwable: Throwable?) {
+                            super.onError(throwable)
+                            AppLog.i("==收藏=collectArticle====onError")
+                        }
+
+                    })
+
+                }
+
+            }
+
+        }
     }
 
 
