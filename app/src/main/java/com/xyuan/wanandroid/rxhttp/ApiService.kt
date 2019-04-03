@@ -75,7 +75,7 @@ interface ApiService {
      * 公众号名称
      */
     @GET("/wxarticle/chapters/json")
-    fun getWechatName(): Observable<BaseResponse<ArrayList<WechatNameBean>>>
+    fun getWechatName(): Observable<BaseResponse<ArrayList<CommonTabNameBean>>>
 
     /**
      * 公众号文章
@@ -84,4 +84,19 @@ interface ApiService {
      */
     @GET("/wxarticle/list/{id}/{page}/json")
     fun getWxArticle(@Path("id") id: Int, @Path("page") page: Int): Observable<BaseResponse<ArticleResponse>>
+
+
+    /**
+     * 项目名称
+     */
+    @GET("/project/tree/json")
+    fun getProjectName(): Observable<BaseResponse<ArrayList<CommonTabNameBean>>>
+
+    /**
+     * 项目列表
+     * @param cid cid
+     * @param page page
+     */
+    @GET("/project/list/{page}/json")
+    fun getProjectList(@Path("page") page: Int , @Query("cid") cid: Int) : Observable<BaseResponse<ProjectResponse>>
 }

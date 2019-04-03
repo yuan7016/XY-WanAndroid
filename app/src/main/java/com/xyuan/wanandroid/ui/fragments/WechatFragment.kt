@@ -5,9 +5,9 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.xyuan.wanandroid.R
-import com.xyuan.wanandroid.adapter.WxNameAdapter
+import com.xyuan.wanandroid.adapter.CommonFragmentPagerAdapter
 import com.xyuan.wanandroid.base.BaseLazyLoadFragment
-import com.xyuan.wanandroid.data.WechatNameBean
+import com.xyuan.wanandroid.data.CommonTabNameBean
 import com.xyuan.wanandroid.listener.BaseLiveDataObserver
 import com.xyuan.wanandroid.viewmodel.WechatViewModel
 import kotlinx.android.synthetic.main.fragement_wechat.*
@@ -48,8 +48,8 @@ class WechatFragment : BaseLazyLoadFragment(){
 
     private fun getWxNameData(){
 
-        mViewModel.getWxName().observe(this,object : BaseLiveDataObserver<ArrayList<WechatNameBean>>(){
-            override fun onSuccess(response: ArrayList<WechatNameBean>) {
+        mViewModel.getWxName().observe(this,object : BaseLiveDataObserver<ArrayList<CommonTabNameBean>>(){
+            override fun onSuccess(response: ArrayList<CommonTabNameBean>) {
                 mStatusLayoutManager?.showSuccessLayout()
 
                 if (response.isNotEmpty()){
@@ -64,7 +64,7 @@ class WechatFragment : BaseLazyLoadFragment(){
                         fragments.add(CommonWxArticleFragment.getNewInstance(data.id , data.name))
                     }
 
-                    viewPagerWechat.adapter = WxNameAdapter(childFragmentManager, titles, fragments)
+                    viewPagerWechat.adapter = CommonFragmentPagerAdapter(childFragmentManager, titles, fragments)
 
                 }
             }

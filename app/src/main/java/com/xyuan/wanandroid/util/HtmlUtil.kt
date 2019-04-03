@@ -18,7 +18,7 @@ object HtmlUtil {
      * @param htmlStr
      * @return 删除Html标签
      */
-    fun delHTMLTag(htmlStr: String): String {
+    private fun delHTMLTag(htmlStr: String): String {
         var htmlStr = htmlStr
 
         val p_html = Pattern.compile(regEx_html, Pattern.CASE_INSENSITIVE)
@@ -31,7 +31,7 @@ object HtmlUtil {
         return htmlStr.trim { it <= ' ' } // 返回文本字符串
     }
 
-    fun getTextFromHtml(htmlStr: String): String {
+   private fun getTextFromHtml(htmlStr: String): String {
         var htmlStr = htmlStr
         htmlStr = delHTMLTag(htmlStr)
         htmlStr = htmlStr.replace(" ".toRegex(), "")
@@ -41,7 +41,7 @@ object HtmlUtil {
 
     /**
      * html 解码
-     * @param source
+     * @param str
      * @return
      */
     fun htmlDecode(str: String): String {

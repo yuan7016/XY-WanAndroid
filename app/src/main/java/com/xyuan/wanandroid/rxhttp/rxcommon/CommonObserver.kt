@@ -2,6 +2,7 @@ package com.xyuan.wanandroid.rxhttp.rxcommon
 
 import com.hjq.toast.ToastUtils
 import com.xyuan.wanandroid.rxhttp.exception.ExceptionEngine
+import com.xyuan.wanandroid.util.AppLog
 import io.reactivex.disposables.Disposable
 
 /**
@@ -22,9 +23,9 @@ abstract class CommonObserver<T> : BaseObserver<T>() {
     }
 
     override fun onError(e: Throwable) {
-        e.printStackTrace()
 
         val apiException = ExceptionEngine.handleException(e)
+        AppLog.e("==CommonObserver==onError=message:${apiException.message}")
         ToastUtils.show(apiException.msg)
     }
 

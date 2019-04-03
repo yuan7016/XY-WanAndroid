@@ -2,9 +2,7 @@ package com.xyuan.wanandroid.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.xyuan.wanandroid.data.ArticleResponse
-import com.xyuan.wanandroid.data.Resource
-import com.xyuan.wanandroid.data.CommonTabNameBean
+import com.xyuan.wanandroid.data.*
 import com.xyuan.wanandroid.rxhttp.ApiService
 import com.xyuan.wanandroid.rxhttp.RxHttpHelper
 import com.xyuan.wanandroid.rxhttp.rxcommon.CommonObserver
@@ -12,19 +10,19 @@ import com.xyuan.wanandroid.rxhttp.transformer.RxTransformer
 import java.util.concurrent.TimeUnit
 
 /**
- * Created by YuanZhiQiang on  2019/4/2 0002 <br/>
- *  desc: 公众号ViewModel
+ * Created by YuanZhiQiang on  2019/4/3 0003 <br/>
+ *  desc: 项目ViewModel
  */
-class WechatViewModel : ViewModel(){
+class ProjectViewModel : ViewModel(){
 
     private val apiService : ApiService = RxHttpHelper.getApiService()
 
 
-    fun getWxName() : MutableLiveData<Resource<ArrayList<CommonTabNameBean>>>{
+    fun getProjectName()  : MutableLiveData<Resource<ArrayList<CommonTabNameBean>>> {
         val liveData = MutableLiveData<Resource<ArrayList<CommonTabNameBean>>>()
 
         apiService
-                .getWechatName()
+                .getProjectName()
                 .compose(RxTransformer.rxCompose())
                 .subscribe(object : CommonObserver<ArrayList<CommonTabNameBean>>(){
                     override fun onStart() {
@@ -46,20 +44,19 @@ class WechatViewModel : ViewModel(){
         return liveData
     }
 
-
-    fun getWxArticleData(id : Int ,page : Int) : MutableLiveData<Resource<ArticleResponse>>{
-        val liveData = MutableLiveData<Resource<ArticleResponse>>()
+    fun getProjectListData(cid : Int , page : Int)  : MutableLiveData<Resource<ProjectResponse>>{
+        val liveData = MutableLiveData<Resource<ProjectResponse>>()
 
         apiService
-                .getWxArticle(id , page)
+                .getProjectList(page , cid)
                 .delay(500, TimeUnit.MILLISECONDS)
                 .compose(RxTransformer.rxCompose())
-                .subscribe(object : CommonObserver<ArticleResponse>(){
+                .subscribe(object : CommonObserver<ProjectResponse>(){
                     override fun onStart() {
                         liveData.postValue(Resource(Resource.START,null,null))
                     }
 
-                    override fun onSuccess(response: ArticleResponse) {
+                    override fun onSuccess(response: ProjectResponse) {
                         liveData.postValue(Resource(Resource.SUCCESS,response,null))
                     }
 
@@ -69,7 +66,8 @@ class WechatViewModel : ViewModel(){
                     }
                 })
 
-
         return liveData
+
     }
+
 }
