@@ -7,9 +7,11 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.alibaba.android.arouter.launcher.ARouter
 import com.xyuan.wanandroid.R
 import com.xyuan.wanandroid.adapter.ProjectAdapter
 import com.xyuan.wanandroid.base.BaseLazyLoadFragment
+import com.xyuan.wanandroid.constant.PathManager
 import com.xyuan.wanandroid.data.ProjectResponse
 import com.xyuan.wanandroid.listener.BaseLiveDataObserver
 import com.xyuan.wanandroid.util.AppLog
@@ -88,6 +90,17 @@ class CommonProjectFragment : BaseLazyLoadFragment(){
 
         mAdapter.setOnLoadMoreListener({
             getProjectListData(currentPage,true) },mRecyclerView)
+
+        //条目点击
+        mAdapter.setOnItemClickListener { adapter, view, position ->
+            val projectItem = adapter.getItem(position) as ProjectResponse.ProjectItemData
+            ARouter
+                    .getInstance()
+                    .build(PathManager.WEBVIEW_ACTIVITY_PATH)
+                    .withString("loadUrl",projectItem.link)
+                    .withString("title",projectItem.title)
+                    .navigation()
+        }
     }
 
 

@@ -7,9 +7,11 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.alibaba.android.arouter.launcher.ARouter
 import com.xyuan.wanandroid.R
 import com.xyuan.wanandroid.adapter.HomeAdapter
 import com.xyuan.wanandroid.base.BaseLazyLoadFragment
+import com.xyuan.wanandroid.constant.PathManager
 import com.xyuan.wanandroid.data.ArticleResponse
 import com.xyuan.wanandroid.listener.BaseLiveDataObserver
 import com.xyuan.wanandroid.util.AppLog
@@ -88,6 +90,17 @@ class CommonWxArticleFragment : BaseLazyLoadFragment(){
 
         mAdapter.setOnLoadMoreListener({
             getArticleData(currentPage,true) },mRecyclerView)
+
+        //条目点击
+        mAdapter.setOnItemClickListener { adapter, view, position ->
+            val articleItem = adapter.getItem(position) as ArticleResponse.ArticleData
+            ARouter
+                    .getInstance()
+                    .build(PathManager.WEBVIEW_ACTIVITY_PATH)
+                    .withString("loadUrl",articleItem.link)
+                    .withString("title",articleItem.title)
+                    .navigation()
+        }
     }
 
 

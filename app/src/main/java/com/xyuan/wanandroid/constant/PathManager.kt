@@ -9,4 +9,5 @@ object PathManager {
     const val MAIN_ACTIVITY_PATH = "/activity/main"
     const val LOGIN_ACTIVITY_PATH = "/activity/login"
     const val REGISTER_ACTIVITY_PATH = "/activity/register"
+    const val WEBVIEW_ACTIVITY_PATH = "/activity/webview"
 }

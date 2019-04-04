@@ -5,10 +5,12 @@ import android.view.View
 import androidx.core.widget.NestedScrollView
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.alibaba.android.arouter.launcher.ARouter
 import com.hjq.toast.ToastUtils
 import com.xyuan.wanandroid.R
 import com.xyuan.wanandroid.adapter.HomeAdapter
 import com.xyuan.wanandroid.base.BaseLazyLoadFragment
+import com.xyuan.wanandroid.constant.PathManager
 import com.xyuan.wanandroid.data.ArticleResponse
 import com.xyuan.wanandroid.data.BannerBean
 import com.xyuan.wanandroid.data.EmptyResponse
@@ -104,7 +106,18 @@ class HomeFragment : BaseLazyLoadFragment(){
             getMoreData()
         }
 
+        //条目点击
+        mAdapter.setOnItemClickListener { adapter, view, position ->
+            val articleData = articleList[position]
+            ARouter
+                    .getInstance()
+                    .build(PathManager.WEBVIEW_ACTIVITY_PATH)
+                    .withString("loadUrl",articleData.link)
+                    .withString("title",articleData.title)
+                    .navigation()
+        }
 
+        //条目里子View点击
         mAdapter.setOnItemChildClickListener { adapter, view, position ->
             val articleData = articleList[position]
 

@@ -6,7 +6,7 @@
     <color name="colorPrimaryDark">#2F80ED</color>
     <!--组件颜色-->
     <color name="colorAccent">#2F80ED</color>
-
+    <color name="colorAccentPink">#FF4081</color>
 
     <!--White-->
     <color name="White_FFFFFF">#FFFFFF</color>
