@@ -19,6 +19,7 @@
 ## Demo截图
 
 ![登录注册](https://github.com/yuan7016/XY-WanAndroid/blob/master/demoimg/demo_login.jpg)
+<img src="https://github.com/yuan7016/XY-WanAndroid/blob/master/demoimg/demo_login.jpg" width="360" height="480" alt="登录注册"/>
 ![首页](https://github.com/yuan7016/XY-WanAndroid/blob/master/demoimg/demo_home1.jpg)
 ![侧边栏](https://github.com/yuan7016/XY-WanAndroid/blob/master/demoimg/demo_home2.jpg)
 ![体系](https://github.com/yuan7016/XY-WanAndroid/blob/master/demoimg/demo_system.jpg)
