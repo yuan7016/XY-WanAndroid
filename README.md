@@ -14,7 +14,7 @@
 - [StatusLayoutManager](https://github.com/Bakumon/StatusLayoutManager)
 - [BRVAH](https://github.com/CymChad/BaseRecyclerViewAdapterHelper)
 - [AgentWebView](https://github.com/Justson/AgentWeb)
-
+- [RxBus](https://github.com/Blankj/RxBus)
 
 ## Demo截图
 |登录|注册|
