@@ -1,6 +1,7 @@
 package com.xyuan.wanandroid.ui
 
 import android.content.Intent
+import android.text.TextUtils
 import android.view.KeyEvent
 import android.view.Menu
 import android.view.MenuItem
@@ -100,13 +101,14 @@ class MainActivity : BaseActivity() {
 
     private fun initListener() {
 
+        //login
         ivUserImg.setOnClickListener {
-            //login UI
             ARouter.getInstance().build(PathManager.LOGIN_ACTIVITY_PATH).navigation(this,LOGIN_REQUEST_CODE)
         }
 
+        //设置
         ll_setting.setOnClickListener {
-            Toast.makeText(this@MainActivity, "设置", Toast.LENGTH_SHORT).show()
+            ARouter.getInstance().build(PathManager.SETTING_ACTIVITY_PATH).navigation()
         }
 
         ll_my_collection.setOnClickListener {
@@ -143,8 +145,13 @@ class MainActivity : BaseActivity() {
         when(requestCode){
             LOGIN_REQUEST_CODE->{
                 val userName = SharedPreferencesUtil.getPreferString(AppConstant.USER_NAME_KEY)
+                if (TextUtils.isEmpty(userName)){
+                    ivUserImg.isEnabled = true
+                }else{
+                    ivUserImg.isEnabled = false
+                    tvUserName.text = userName
+                }
 
-                tvUserName.text = userName
             }
         }
     }

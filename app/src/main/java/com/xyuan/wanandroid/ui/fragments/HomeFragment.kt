@@ -6,10 +6,12 @@ import androidx.core.widget.NestedScrollView
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.alibaba.android.arouter.launcher.ARouter
+import com.blankj.rxbus.RxBus
 import com.hjq.toast.ToastUtils
 import com.xyuan.wanandroid.R
 import com.xyuan.wanandroid.adapter.HomeAdapter
 import com.xyuan.wanandroid.base.BaseLazyLoadFragment
+import com.xyuan.wanandroid.constant.AppConstant
 import com.xyuan.wanandroid.constant.PathManager
 import com.xyuan.wanandroid.data.ArticleResponse
 import com.xyuan.wanandroid.data.BannerBean
@@ -44,7 +46,16 @@ class HomeFragment : BaseLazyLoadFragment(){
     }
 
     override fun initView(rootView: View?) {
-
+        // 注册 String 类型事件
+        RxBus.getDefault().subscribe(this, object : RxBus.Callback<String>() {
+            override fun onEvent(s: String) {
+                AppLog.e("eventTag", s)
+                if (s == AppConstant.EVENT_LOGIN_SUCCESS){
+                    //登录成功 刷新数据
+                    getData()
+                }
+            }
+        })
     }
 
     override fun onFragmentFirstVisible() {
@@ -126,24 +137,15 @@ class HomeFragment : BaseLazyLoadFragment(){
 
                     mViewModel.collectArticle(articleData.id , articleData.collect).observe(this,object : BaseLiveDataObserver<EmptyResponse>(){
                         override fun onSuccess(response: EmptyResponse) {
-                            AppLog.i("==收藏=collectArticle====onSuccess")
                             if (response.success){
                                 val collectState = articleData.collect
                                 articleData.collect = !collectState
                                 mAdapter.setData(position,articleData)
                                 ToastUtils.show("操作成功")
                             }
-
                         }
-                        override fun onError(throwable: Throwable?) {
-                            super.onError(throwable)
-                            AppLog.i("==收藏=collectArticle====onError")
-                        }
-
                     })
-
                 }
-
             }
 
         }
@@ -161,11 +163,9 @@ class HomeFragment : BaseLazyLoadFragment(){
 
         mViewModel.getArticleData(page).observe(this,object : BaseLiveDataObserver<ArticleResponse>(){
             override fun onSuccess(response: ArticleResponse) {
-                AppLog.w("===getData====onSuccess")
                 smartRefreshLayout.finishRefresh()
                 mStatusLayoutManager?.showSuccessLayout()
                 if (response.datas!!.isNotEmpty()){
-                    AppLog.w("===getData====isNotEmpty---size=${response.datas!!.size}")
                     articleList.addAll(response.datas!!)
 
                     mAdapter.notifyDataSetChanged()
@@ -212,10 +212,8 @@ class HomeFragment : BaseLazyLoadFragment(){
                     currentPage ++
 
                     smartRefreshLayout.finishLoadMore()
-                    AppLog.w("===getMoreData===finishLoadMore--=currentPage=$currentPage")
                 }else{
                     smartRefreshLayout.finishLoadMoreWithNoMoreData()
-                    AppLog.w("===getMoreData===finishLoadMoreWithNoMoreData--=currentPage=$currentPage")
                 }
 
             }
@@ -223,7 +221,6 @@ class HomeFragment : BaseLazyLoadFragment(){
             override fun onError(throwable: Throwable?) {
                 super.onError(throwable)
                 smartRefreshLayout.finishLoadMore(false)
-                AppLog.w("===getMoreData====onError")
             }
         })
     }
@@ -248,9 +245,7 @@ class HomeFragment : BaseLazyLoadFragment(){
                     if (titles.isNotEmpty()){
                         banner.setBannerTitles(titles)
                     }
-
                     banner.start()
-
 
                     banner.setOnBannerListener(object : OnBannerClickListener{
                         override fun onBannerClick(position: Int) {
@@ -272,6 +267,13 @@ class HomeFragment : BaseLazyLoadFragment(){
     override fun onStop() {
         super.onStop()
         banner.stopAutoPlay()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+
+        // 注销
+        RxBus.getDefault().unregister(this)
     }
 
 }

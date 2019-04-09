@@ -35,4 +35,19 @@ object AppConstant {
      * user_name
      */
     const val USER_NAME_KEY = "user_name"
+
+    /**
+     * login success
+     */
+    const val EVENT_LOGIN_SUCCESS = "login_success"
+
+    /**
+     * login passed 登录过期
+     */
+    const val EVENT_LOGIN_PASSED = "login_passed"
+
+    /**
+     * login out
+     */
+    const val EVENT_LOGIN_OUT = "login_out"
 }

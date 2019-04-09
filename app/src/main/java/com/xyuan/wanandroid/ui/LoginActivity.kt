@@ -7,6 +7,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
+import com.blankj.rxbus.RxBus
 import com.hjq.toast.ToastUtils
 import com.xyuan.wanandroid.R
 import com.xyuan.wanandroid.base.BaseActivity
@@ -137,6 +138,8 @@ class LoginActivity : BaseActivity(){
                 SharedPreferencesUtil.setPreferInt(AppConstant.USER_ID_KEY,response.id)
                 SharedPreferencesUtil.setPreferString(AppConstant.USER_NAME_KEY,response.username)
 
+                //登录成功  通知刷新首页数据
+                RxBus.getDefault().post(AppConstant.EVENT_LOGIN_SUCCESS)
 
                 finish()
             }
