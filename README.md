@@ -19,27 +19,27 @@
 ## Demo截图
 |登录|注册|
 |:---:|:---:|
-|<img src="https://github.com/yuan7016/XY-WanAndroid/blob/master/demoimg/demo_login.jpg" width="360" height="500" alt="登录注册"/>|<img src="https://github.com/yuan7016/XY-WanAndroid/blob/master/demoimg/demo_login.jpg" width="360" height="500" alt="登录注册"/>|
+|<img src="https://github.com/yuan7016/XY-WanAndroid/blob/master/demoimg/demo_login.jpg" width="360" height="550" alt="登录注册"/>|<img src="https://github.com/yuan7016/XY-WanAndroid/blob/master/demoimg/demo_login.jpg" width="360" height="550" alt="登录注册"/>|
 
 |首页|首页侧边栏|
 |:---:|:---:|
-|<img src="https://github.com/yuan7016/XY-WanAndroid/blob/master/demoimg/demo_home1.jpg" width="360" height="500" alt="首页"/>|<img src="https://github.com/yuan7016/XY-WanAndroid/blob/master/demoimg/demo_home2.jpg" width="360" height="500" alt="侧边栏"/>|
+|<img src="https://github.com/yuan7016/XY-WanAndroid/blob/master/demoimg/demo_home1.jpg" width="360" height="550" alt="首页"/>|<img src="https://github.com/yuan7016/XY-WanAndroid/blob/master/demoimg/demo_home2.jpg" width="360" height="500" alt="侧边栏"/>|
 
 |体系|公众号|
 |:---:|:---:|
-|<img src="https://github.com/yuan7016/XY-WanAndroid/blob/master/demoimg/demo_system.jpg" width="360" height="500" alt="体系"/>|<img src="https://github.com/yuan7016/XY-WanAndroid/blob/master/demoimg/demo_gzh.jpg" width="360" height="500" alt="公众号"/>|
+|<img src="https://github.com/yuan7016/XY-WanAndroid/blob/master/demoimg/demo_system.jpg" width="360" height="550" alt="体系"/>|<img src="https://github.com/yuan7016/XY-WanAndroid/blob/master/demoimg/demo_gzh.jpg" width="360" height="550" alt="公众号"/>|
 
 |项目|...|
 |:---:|:---:|
-|<img src="https://github.com/yuan7016/XY-WanAndroid/blob/master/demoimg/demo_project.jpg" width="360" height="500" alt="项目"/>||
+|<img src="https://github.com/yuan7016/XY-WanAndroid/blob/master/demoimg/demo_project.jpg" width="360" height="550" alt="项目"/>||
 
 
 ## 版本:
 #### V1.0.0
 - [√] 登录、注册
-- [√] 收藏
 - [√] 主页
 - [√] 项目
 - [√] 体系
+- [√] 公众号
 - [√] 搜索
-- [√] 我的
+- [√] 收藏
