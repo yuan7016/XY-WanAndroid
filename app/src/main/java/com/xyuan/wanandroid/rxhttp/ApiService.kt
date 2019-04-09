@@ -35,7 +35,7 @@ interface ApiService {
      * 退出登录
      */
     @GET("/user/logout/json")
-    fun loginOut(): Observable<BaseResponse<LoginResponse>>
+    fun loginOut(): Observable<BaseResponse<EmptyResponse>>
 
 
     /**

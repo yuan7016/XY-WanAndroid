@@ -12,6 +12,7 @@ import io.reactivex.disposables.Disposable
 abstract class CommonObserver<T> : BaseObserver<T>() {
 
     override fun onComplete() {
+        AppLog.e("==CommonObserver==onComplete=")
     }
 
     override fun onSubscribe(d: Disposable) {
@@ -19,13 +20,14 @@ abstract class CommonObserver<T> : BaseObserver<T>() {
     }
 
     override fun onNext(t: T) {
+        AppLog.e("==CommonObserver==onNext=")
         onSuccess(t)
     }
 
     override fun onError(e: Throwable) {
 
         val apiException = ExceptionEngine.handleException(e)
-        AppLog.e("==CommonObserver==onError=message:${apiException.message}")
+        AppLog.e("==CommonObserver==onError=message:${apiException.msg}")
         ToastUtils.show(apiException.msg)
     }
 

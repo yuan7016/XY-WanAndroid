@@ -50,8 +50,8 @@ class HomeFragment : BaseLazyLoadFragment(){
         RxBus.getDefault().subscribe(this, object : RxBus.Callback<String>() {
             override fun onEvent(s: String) {
                 AppLog.e("eventTag", s)
-                if (s == AppConstant.EVENT_LOGIN_SUCCESS){
-                    //登录成功 刷新数据
+                if (s.contains("login")){
+                    //登录操作后  刷新数据
                     getData()
                 }
             }
@@ -105,9 +105,6 @@ class HomeFragment : BaseLazyLoadFragment(){
 
         //刷新
         smartRefreshLayout.setOnRefreshListener {
-            currentPage = 0
-            articleList.clear()
-            smartRefreshLayout.resetNoMoreData()
 
             getData()
         }
@@ -154,8 +151,11 @@ class HomeFragment : BaseLazyLoadFragment(){
 
     override fun getData() {
         super.getData()
-        getArticleData(0)
+        currentPage = 0
+        articleList.clear()
+        smartRefreshLayout.resetNoMoreData()
 
+        getArticleData(0)
         getBannerData()
     }
 

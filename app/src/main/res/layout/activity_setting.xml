@@ -1,35 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_height="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_width="match_parent">
 
-    <include layout="@layout/common_tool_bar_layout" />
+    <include
+        android:id="@+id/action_bar_top"
+        layout="@layout/common_tool_bar_layout" />
 
 
-    <TextView
-        android:layout_width="match_parent"
+    <RelativeLayout
         android:layout_height="45dp"
-        android:text="清除缓存"
-        android:gravity="center_vertical"
+        android:layout_below="@id/action_bar_top"
+        android:layout_width="match_parent">
+
+        <TextView
+            android:id="@+id/tv_clear_cache"
+            android:layout_height="45dp"
+            android:drawableEnd="@drawable/icon_balck_next"
+            android:gravity="center_vertical"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:text="清除缓存"
+            android:layout_width="match_parent" />
+
+        <View
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/Gray_999999"
+            android:layout_width="match_parent" />
+
+    </RelativeLayout>
+
+
+    <Button
+        android:id="@+id/btn_loginOut"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"
-        android:layout_marginTop="15dp"
-        />
-
-
-    <com.google.android.material.button.MaterialButton
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_marginBottom="100dp"
+        android:background="@drawable/bg_shape_blue_gradient"
         android:text="退出登录"
-        app:cornerRadius="5dp"
         android:textColor="@color/White_FFFFFF"
         android:textSize="15sp"
-        android:background="@color/Blue_2F80ED"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="15dp"
-        />
+        android:layout_width="match_parent" />
 
-</LinearLayout>
+</RelativeLayout>

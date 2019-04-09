@@ -13,6 +13,7 @@ import com.xyuan.wanandroid.R
 import com.xyuan.wanandroid.base.BaseActivity
 import com.xyuan.wanandroid.constant.PathManager
 import com.xyuan.wanandroid.util.AppLog
+import com.xyuan.wanandroid.util.HtmlUtil
 import kotlinx.android.synthetic.main.activity_web_view.*
 import kotlinx.android.synthetic.main.common_tool_bar_layout.*
 
@@ -39,7 +40,7 @@ class CommonWebViewActivity : BaseActivity() {
 
         frameLayoutWebView.addView(mWebView)
 
-        initToolBar(toolbarCommon,title)
+        initToolBar(toolbarCommon,HtmlUtil.htmlDecode(title))
 
         initWebView()
     }

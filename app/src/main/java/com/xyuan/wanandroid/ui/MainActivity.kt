@@ -10,6 +10,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.fragment.app.Fragment
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
+import com.blankj.rxbus.RxBus
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.xyuan.wanandroid.R
 import com.xyuan.wanandroid.adapter.MainFragmentPagerAdapter
@@ -22,6 +23,7 @@ import com.xyuan.wanandroid.ui.fragments.WechatFragment
 import com.xyuan.wanandroid.util.BottomNavigationViewUtil
 import com.xyuan.wanandroid.constant.PathManager
 import com.xyuan.wanandroid.data.LoginResponse
+import com.xyuan.wanandroid.util.AppLog
 import com.xyuan.wanandroid.util.SharedPreferencesUtil
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
@@ -59,7 +61,6 @@ class MainActivity : BaseActivity() {
         false
     }
 
-    private val LOGIN_REQUEST_CODE = 1000
 
     override fun getContentLayoutId(): Int {
         return R.layout.activity_main
@@ -100,10 +101,29 @@ class MainActivity : BaseActivity() {
     }
 
     private fun initListener() {
+        // 注册 String 类型事件
+        RxBus.getDefault().subscribe(this, object : RxBus.Callback<String>() {
+            override fun onEvent(s: String) {
+                AppLog.w("MainActivity==eventTag", s)
+                if (s.contains("login")){
+                    //登录操作后  刷新数据
+                    val userName = SharedPreferencesUtil.getPreferString(AppConstant.USER_NAME_KEY)
+
+                    if (TextUtils.isEmpty(userName)){
+                        ivUserImg.isEnabled = true
+                        tvUserName.text = "请登录"
+                    }else{
+                        ivUserImg.isEnabled = false
+                        tvUserName.text = userName
+                    }
+                }
+            }
+        })
+
 
         //login
         ivUserImg.setOnClickListener {
-            ARouter.getInstance().build(PathManager.LOGIN_ACTIVITY_PATH).navigation(this,LOGIN_REQUEST_CODE)
+            ARouter.getInstance().build(PathManager.LOGIN_ACTIVITY_PATH).navigation()
         }
 
         //设置
@@ -111,8 +131,16 @@ class MainActivity : BaseActivity() {
             ARouter.getInstance().build(PathManager.SETTING_ACTIVITY_PATH).navigation()
         }
 
+        //我的收藏
         ll_my_collection.setOnClickListener {
-            Toast.makeText(this@MainActivity, "收藏", Toast.LENGTH_SHORT).show()
+            val userName = SharedPreferencesUtil.getPreferString(AppConstant.USER_NAME_KEY)
+
+            if (TextUtils.isEmpty(userName)){
+                ARouter.getInstance().build(PathManager.LOGIN_ACTIVITY_PATH).navigation()
+            }else{
+                Toast.makeText(this@MainActivity, "收藏", Toast.LENGTH_SHORT).show()
+            }
+
         }
 
         ll_about_us.setOnClickListener {
@@ -135,24 +163,6 @@ class MainActivity : BaseActivity() {
                 true
             }
             else -> super.onOptionsItemSelected(item)
-        }
-    }
-
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        when(requestCode){
-            LOGIN_REQUEST_CODE->{
-                val userName = SharedPreferencesUtil.getPreferString(AppConstant.USER_NAME_KEY)
-                if (TextUtils.isEmpty(userName)){
-                    ivUserImg.isEnabled = true
-                }else{
-                    ivUserImg.isEnabled = false
-                    tvUserName.text = userName
-                }
-
-            }
         }
     }
 

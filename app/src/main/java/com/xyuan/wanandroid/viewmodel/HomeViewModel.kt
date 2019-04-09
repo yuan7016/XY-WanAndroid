@@ -82,7 +82,7 @@ class HomeViewModel : ViewModel() {
                     override fun onSuccess(response: BaseResponse<EmptyResponse>) {
                         if (response != null && response.isSuccess()){
                             //data 为空
-                            liveData.postValue(Resource(Resource.ERROR,EmptyResponse(true),null))
+                            liveData.postValue(Resource(Resource.SUCCESS,EmptyResponse(true),null))
                         }
                     }
                     override fun onError(e: Throwable) {
@@ -101,7 +101,7 @@ class HomeViewModel : ViewModel() {
                     override fun onSuccess(response: BaseResponse<EmptyResponse>) {
                         if (response != null && response.isSuccess()){
                             //data 为空
-                            liveData.postValue(Resource(Resource.ERROR,EmptyResponse(true),null))
+                            liveData.postValue(Resource(Resource.SUCCESS,EmptyResponse(true),null))
                         }else{
                             onError(ApiException(response.errorCode, response.errorMsg!!))
                         }
@@ -109,6 +109,7 @@ class HomeViewModel : ViewModel() {
 
                     override fun onError(e: Throwable) {
                         super.onError(e)
+
                         liveData.postValue(Resource(Resource.ERROR,null,e))
                     }
 
