@@ -249,7 +249,12 @@ class HomeFragment : BaseLazyLoadFragment(){
 
                     banner.setOnBannerListener(object : OnBannerClickListener{
                         override fun onBannerClick(position: Int) {
-                            ToastUtils.show("点击了:$position===${response[position].title}")
+                            ARouter
+                                .getInstance()
+                                .build(PathManager.WEBVIEW_ACTIVITY_PATH)
+                                .withString("loadUrl",response[position].url)
+                                .withString("title",response[position].title)
+                                .navigation()
                         }
                     })
 

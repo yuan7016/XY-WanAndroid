@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:layout_width="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar_me"
+        android:layout_height="180dp"
+        android:fitsSystemWindows="true"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        android:layout_width="match_parent">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/toolbar_layout_me"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:toolbarId="@+id/toolbar_me"
+            android:layout_width="match_parent">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar_me"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/AppTheme.PopupOverlay"
+                app:title="关于我"
+                android:layout_width="match_parent" />
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_width="match_parent">
+
+        <RelativeLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+            <ImageView
+                android:id="@+id/iv_bg_me"
+                android:layout_height="match_parent"
+                android:src="@drawable/iv_bg_about_me"
+                android:layout_width="wrap_content" />
+
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:layout_width="match_parent">
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/about_me"
+                    android:textColor="@color/Red_F14336"
+                    android:textSize="15sp"
+                    android:layout_width="wrap_content" />
+
+                <TextView
+                    android:id="@+id/tv_git"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="Github: https://github.com/yuan7016"
+                    android:textColor="@color/Blue_2F80ED"
+                    android:textSize="18sp"
+                    android:layout_width="wrap_content" />
+
+                <TextView
+                    android:id="@+id/tv_csdn"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="CSDN: https://blog.csdn.net/yuan7016"
+                    android:textColor="@color/Blue_2F80ED"
+                    android:textSize="18sp"
+                    android:layout_width="wrap_content" />
+
+                <TextView
+                    android:id="@+id/tv_wan_android"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="感谢WanAndroid: https://www.wanandroid.com"
+                    android:textSize="16sp"
+                    android:textColor="@color/Blue_2F80ED"
+                    android:layout_width="wrap_content" />
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_below="@id/iv_bg_me"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:text="--女神镇楼--\n水平有限，欢迎赐教"
+                android:textColor="@color/Blue_0099FF"
+                android:layout_width="wrap_content" />
+        </RelativeLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

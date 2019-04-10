@@ -1,6 +1,5 @@
 package com.xyuan.wanandroid.ui
 
-import android.content.Intent
 import android.text.TextUtils
 import android.view.KeyEvent
 import android.view.Menu
@@ -16,14 +15,13 @@ import com.xyuan.wanandroid.R
 import com.xyuan.wanandroid.adapter.MainFragmentPagerAdapter
 import com.xyuan.wanandroid.base.BaseActivity
 import com.xyuan.wanandroid.constant.AppConstant
+import com.xyuan.wanandroid.constant.PathManager
 import com.xyuan.wanandroid.ui.fragments.HomeFragment
 import com.xyuan.wanandroid.ui.fragments.ProjectFragment
 import com.xyuan.wanandroid.ui.fragments.SystemFragment
 import com.xyuan.wanandroid.ui.fragments.WechatFragment
-import com.xyuan.wanandroid.util.BottomNavigationViewUtil
-import com.xyuan.wanandroid.constant.PathManager
-import com.xyuan.wanandroid.data.LoginResponse
 import com.xyuan.wanandroid.util.AppLog
+import com.xyuan.wanandroid.util.BottomNavigationViewUtil
 import com.xyuan.wanandroid.util.SharedPreferencesUtil
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
@@ -143,8 +141,9 @@ class MainActivity : BaseActivity() {
 
         }
 
+        //关于我
         ll_about_us.setOnClickListener {
-            Toast.makeText(this@MainActivity, "关于我", Toast.LENGTH_SHORT).show()
+            ARouter.getInstance().build(PathManager.ABOUTME_ACTIVITY_PATH).navigation()
         }
     }
 
@@ -188,5 +187,10 @@ class MainActivity : BaseActivity() {
             }
         }
         return super.onKeyDown(keyCode, event)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        RxBus.getDefault().unregister(this)
     }
 }
