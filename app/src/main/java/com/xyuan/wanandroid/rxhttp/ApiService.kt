@@ -71,6 +71,15 @@ interface ApiService {
     @GET("/tree/json")
     fun getSystemTree(): Observable<BaseResponse<ArrayList<SystemBean>>>
 
+
+    /**
+     * 体系文章
+     * @param page page
+     * @param cid cid
+     */
+    @GET("/article/list/{page}/json")
+    fun getSystemArticleList(@Path("page") page: Int ,  @Query("cid") cid: Int): Observable<BaseResponse<ArticleResponse>>
+
     /**
      * 公众号名称
      */

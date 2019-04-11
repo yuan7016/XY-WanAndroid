@@ -7,7 +7,7 @@ import com.xyuan.wanandroid.util.HtmlUtil
 
 /**
  * Created by YuanZhiQiang on 2019/4/1
- * desc: FragmentPagerAdapter  公众号 、项目
+ * desc: FragmentPagerAdapter  公众号 、项目、体系
  */
 class CommonFragmentPagerAdapter(fm: FragmentManager, val titles: ArrayList<String>, val fragments: ArrayList<Fragment>) : FragmentPagerAdapter(fm) {
 

@@ -1,12 +1,14 @@
 package com.xyuan.wanandroid.data
 
+import java.io.Serializable
+
 /**
  * Created by YuanZhiQiang on 2019/03/25 16:48
  * Desc:文章
  */
 data class ArticleResponse(var offset: Int, var size: Int,
                            var total: Int, var pageCount: Int,
-                           var curPage: Int, var over: Boolean, var datas: ArrayList<ArticleData>?){
+                           var curPage: Int, var over: Boolean, var datas: ArrayList<ArticleData>?) : Serializable{
 
 
     /**
@@ -20,7 +22,7 @@ data class ArticleResponse(var offset: Int, var size: Int,
                            var zan: Int, var desc: Any,
                            var visible: Int, var niceDate: String,
                            var courseId: Int, var collect: Boolean,
-                           var superChapterId : Int,var superChapterName : String?)
+                           var superChapterId : Int,var superChapterName : String?)  : Serializable
 
 
     fun hasNextPage() : Boolean{

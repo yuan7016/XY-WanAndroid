@@ -64,6 +64,11 @@
             android:name=".ui.AboutMeActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
+
+        <activity
+                android:name=".ui.CommonSystemTabActivity"
+                android:launchMode="singleTop"
+                android:screenOrientation="portrait" />
     </application>
 
 </manifest>

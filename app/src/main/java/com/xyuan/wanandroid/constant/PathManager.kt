@@ -13,4 +13,5 @@ object PathManager {
     const val SETTING_ACTIVITY_PATH = "/activity/setting"
     const val MYCOLLECTION_ACTIVITY_PATH = "/activity/collections"
     const val ABOUTME_ACTIVITY_PATH = "/activity/aboutme"
+    const val SYSTEM_ACTIVITY_PATH = "/activity/system"
 }

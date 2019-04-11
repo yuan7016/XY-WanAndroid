@@ -15,22 +15,22 @@ import com.xyuan.wanandroid.constant.PathManager
 import com.xyuan.wanandroid.data.ArticleResponse
 import com.xyuan.wanandroid.listener.BaseLiveDataObserver
 import com.xyuan.wanandroid.util.AppLog
-import com.xyuan.wanandroid.viewmodel.WechatViewModel
+import com.xyuan.wanandroid.viewmodel.SystemViewModel
 import kotlinx.android.synthetic.main.fragement_common_article.*
 
 /**
- * Created by YuanZhiQiang on 2019/03/08 15:31.
- * 公众号
+ * Created by YuanZhiQiang on 2019/04/11 15:31.
+ *  Common文章列表
  */
-class CommonWxArticleFragment : BaseLazyLoadFragment(){
+class CommonSystemFragment : BaseLazyLoadFragment(){
 
     private lateinit var mRecyclerView : RecyclerView
     private lateinit var mSwipeRefreshLayout : SwipeRefreshLayout
     private lateinit var mAdapter : HomeAdapter
     private var articleList : ArrayList<ArticleResponse.ArticleData> = arrayListOf()
 
-    private val mViewModel : WechatViewModel by lazy {
-        ViewModelProviders.of(this).get(WechatViewModel::class.java)
+    private val mViewModel : SystemViewModel by lazy {
+        ViewModelProviders.of(this).get(SystemViewModel::class.java)
     }
 
     private var currentPage: Int = 0
@@ -43,7 +43,7 @@ class CommonWxArticleFragment : BaseLazyLoadFragment(){
             bundle.putInt("id", id)
             bundle.putString("name", name)
 
-            val fragment = CommonWxArticleFragment()
+            val fragment = CommonSystemFragment()
             fragment.arguments = bundle
             return fragment
         }
@@ -106,7 +106,7 @@ class CommonWxArticleFragment : BaseLazyLoadFragment(){
 
     private fun getArticleData(page : Int , isLoadMore : Boolean){
 
-        mViewModel.getWxArticleData(chapterID,page).observe(this, object : BaseLiveDataObserver<ArticleResponse>(){
+        mViewModel.getArticleData(chapterID,page).observe(this, object : BaseLiveDataObserver<ArticleResponse>(){
             override fun onSuccess(response: ArticleResponse) {
                 mStatusLayoutManager?.showSuccessLayout()
                 if (!isLoadMore){

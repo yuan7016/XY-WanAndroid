@@ -1,11 +1,13 @@
 package com.xyuan.wanandroid.data
 
+import java.io.Serializable
+
 /**
  * Created by YuanZhiQiang on  2019/3/29 0029 <br/>
  *  desc: 体系
  */
 data class SystemBean(var courseId : Int,var id : Int,var name:String,var visible : Int,
-                      var order : Int,var parentChapterId:Int,var children : ArrayList<ChildrenTree>) {
+                      var order : Int,var parentChapterId:Int,var children : ArrayList<ChildrenTree>) : Serializable{
 
 //    {
 //        "children": [
@@ -29,7 +31,7 @@ data class SystemBean(var courseId : Int,var id : Int,var name:String,var visibl
 
 
     data class ChildrenTree(var courseId : Int,var id : Int,var name:String,var visible : Int,
-                            var order : Int,var parentChapterId:Int,var children : ArrayList<ChildrenTree>?){
+                            var order : Int,var parentChapterId:Int,var children : ArrayList<ChildrenTree>?) : Serializable{
 
 
     }

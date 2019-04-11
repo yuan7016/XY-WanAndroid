@@ -1,16 +1,21 @@
 package com.xyuan.wanandroid.ui.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.alibaba.android.arouter.launcher.ARouter
 import com.xyuan.wanandroid.R
 import com.xyuan.wanandroid.adapter.SystemAdapter
 import com.xyuan.wanandroid.base.BaseLazyLoadFragment
+import com.xyuan.wanandroid.constant.PathManager
+import com.xyuan.wanandroid.data.ArticleResponse
 import com.xyuan.wanandroid.data.SystemBean
 import com.xyuan.wanandroid.listener.BaseLiveDataObserver
+import com.xyuan.wanandroid.ui.CommonSystemTabActivity
 import com.xyuan.wanandroid.util.AppLog
 import com.xyuan.wanandroid.viewmodel.SystemViewModel
 import kotlinx.android.synthetic.main.fragement_system.*
@@ -73,6 +78,14 @@ class SystemFragment : BaseLazyLoadFragment(){
                     mRecyclerView.adapter = systemAdapter
                     systemAdapter.notifyDataSetChanged()
 
+                    //条目跳转
+                    systemAdapter.setOnItemClickListener { adapter, view, position ->
+                        val item = adapter.getItem(position) as SystemBean
+                        val intent = Intent(activity, CommonSystemTabActivity::class.java)
+                        intent.putExtra("title",item.name)
+                        intent.putExtra("tabList",item.children)
+                        startActivity(intent)
+                    }
                 }else{
                     onEmpty()
                 }
@@ -81,14 +94,12 @@ class SystemFragment : BaseLazyLoadFragment(){
             override fun onEmpty() {
                 super.onEmpty()
                 mSwipeRefreshLayout.isRefreshing = false
-                AppLog.e("===getTreeData====onEmpty")
                 mStatusLayoutManager?.showEmptyLayout()
             }
 
             override fun onError(throwable: Throwable?) {
                 super.onError(throwable)
                 mSwipeRefreshLayout.isRefreshing = false
-                AppLog.e("===getTreeData====onError")
                 mStatusLayoutManager?.showErrorLayout()
             }
 

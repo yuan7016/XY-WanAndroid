@@ -60,8 +60,6 @@ dependencies {
     // 替换成最新版本, 需要注意的是api
     // 要与compiler匹配使用，均使用最新版可以保证兼容
     implementation rootProject.ext.dependencies["arouter-api"]
-    implementation 'androidx.appcompat:appcompat:1.0.0-beta01'
-    implementation 'com.google.android.material:material:1.0.0-beta01'
     kapt rootProject.ext.dependencies["arouter-compiler"]
     //ToastUtil
     implementation 'com.hjq:toast:5.0'

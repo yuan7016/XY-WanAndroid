@@ -61,7 +61,7 @@ class WechatFragment : BaseLazyLoadFragment(){
 
                     for (data in response) {
                         titles.add(data.name)
-                        fragments.add(CommonWxArticleFragment.getNewInstance(data.id , data.name))
+                        fragments.add(CommonArticleFragment.getNewInstance(data.id , data.name))
                     }
 
                     viewPagerWechat.adapter = CommonFragmentPagerAdapter(childFragmentManager, titles, fragments)
